@@ -1,0 +1,2 @@
+python freezam.py add --title="Song title" --artist="Artist name" song.mp3
+
