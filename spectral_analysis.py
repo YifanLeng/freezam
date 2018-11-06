@@ -94,9 +94,31 @@ def apply_windows(slided_signals, window_type="hann"):
         The same dimension as the input. 
     """
     # length of each slided signal
-    n = slided_signals.shape[-1]
-    window = signal.get_window(window_type, n)
-    windowed_signals = numpy.multiply(slided_signals, window)
+    nrow = slided_signals.shape[0]
+    ncol = slided_signals.shape[1]
+    window = signal.get_window(window_type, ncol)
+    print(slided_signals.shape)
+    print(window.shape)
+    # to deal with memory error, we divide the slided signals
+    # so that each part has < 5k rows
+    start_row = 0
+    step = 50000
+    windowed_signals  = []
+    while nrow > step:
+        end_row = start_row + step
+        temp = slided_signals[start_row:end_row,]
+        start_row = end_row
+        temp_windowed = numpy.multiply(temp, window)
+        windowed_signals.append(temp_windowed)
+        nrow = nrow-step
+    if nrow > 0:
+        temp = slided_signals[start_row:slided_signals.shape[0],]
+        temp.astype(numpy.float16)
+        print(temp.shape)
+        temp_windowed = numpy.multiply(temp, window)
+        windowed_signals.append(temp_windowed)
+    windowed_signals = numpy.concatenate(windowed_signals, axis=0)
+    #windowed_signals = numpy.multiply(slided_signals, window)
     return windowed_signals
 
 def get_windowed_signals(signal, rate, window_type, width, shift):
@@ -119,8 +141,8 @@ def get_windowed_signals(signal, rate, window_type, width, shift):
     data : numpy array
            its dimension is the number of windows x window length
     """
-    size = int(round(width * rate))
-    stepsize = int(round(shift * rate))
+    size = width
+    stepsize = shift
     signals = sliding_window(signal, size, stepsize)
     win_signals = apply_windows(signals, window_type)
     return win_signals

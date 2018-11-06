@@ -1,4 +1,8 @@
 import json
+import numpy as np
+import os
+from scipy import spatial
+
 class Database:
     def __init__(self, path):
         self.path = path
@@ -19,6 +23,7 @@ class Database:
         filePath = self.path + songname + '.json'
         with open(filePath, 'w') as fp:
             json.dump(song, fp)
+        # add the song' signatures 
 
     def remove_from_database(self, filename):
         """
@@ -49,10 +54,26 @@ class Database:
             a list of song objects
             or an empty list if no match is found
         """
-        pass
+         # set the initial search space to be the whole library
+        database = self.path
+        # start matching from the start of a song's signature
+        search_space = [f for f in os.listdir(database) if f.endswith('.json')]
+        matched_result = []
+        # load all the songs' signatures
+        for fname in search_space:
+            f = open(database + fname)
+            song = json.loads(f.read())
+            f.close()
+            # convert to 2D numpy array
+            song_signature = np.asarray(song['signature'], dtype=np.float32)
+            print("start matching with")
+            print(fname)
+            if Database.match(signature, song_signature, threshold):
+                matched_result.append(fname)
+        return matched_result
 
-
-    def match(self, signature, threshold):
+    @staticmethod
+    def match(snip_sig, song_sig, threshold):
         """
         match the signature of a song with the signatures
         stored in the data base
@@ -67,5 +88,46 @@ class Database:
             a list of tuples with (title, artist, song's name)
             or an empty list if no match is found
         """
-        pass
+
+        def match_2D_arrays(a, b, a_start, b_start, threshold):
+            a1 = a[a_start:]
+            b1 = b[b_start:]
+            if len(a1) != len(b1):
+                return False
+            k = len(a1)
+            print(k)
+            for i in range(k):
+                #if not np.allclose(a1[a_start+i], b1[b_start+i], atol = threshold):
+                if spatial.distance.euclidean(a1[a_start+i], b1[b_start+i]) > threshold:
+                    return False
+            return True
+
+        snip_start = snip_sig[0]
+        for i in range(len(song_sig)):
+            # find the start of the window that matched the start of the snippet
+            # if np.allclose(snip_start, song_sig[i], atol = threshold):
+            if spatial.distance.euclidean(snip_start, song_sig[i])<threshold:
+                k = len(snip_sig)
+                if i+k > len(song_sig):
+                    return False
+                for j in range(1, k):
+                    if spatial.distance.euclidean(snip_sig[j], song_sig[i+j])>threshold:
+                        return False
+                return True
+        return False
+
+
+        
+
+   
+            
+                       
+                
+
+
+
+
+
+        
+        
 

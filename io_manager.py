@@ -1,6 +1,6 @@
 import os
 import re
-from pydub import AudioSegment
+# from pydub import AudioSegment
 import numpy as np
 import urllib.request
 import scipy.io.wavfile
@@ -89,28 +89,54 @@ def add(args):
         print("=========downloading the audio file===================")
         url = filename
         name = url.split('/')[-1]
-        (filepath, _) = urllib.request.urlretrieve(url, './Data/'+name)
+        (filepath, _) = urllib.request.urlretrieve(url, './Library/'+name)
         (rate, signal) = convert_file_to_signal("", filepath)
     else:
-        (rate, signal) = convert_file_to_signal("./Data/",filename)
-    mono_signal = signal[:,0]
+        (rate, signal) = convert_file_to_signal("./Library/",filename)
+    num_channels = signal.shape[-1]
+    # the song has 2 channels
+    if num_channels == 2:
+        # take the mean of the two channels
+        mono_signal = np.mean(signal, axis=1)
+        print(mono_signal.shape)
+        print(mono_signal.shape[-1])
+    else:
+        mono_signal = signal
+
     song = Song(rate, mono_signal.tolist())
     song.set_info(args.title, args.artist, filename)
-    spectro = get_spectrograms(rate, mono_signal, 10, 2, window_type="hann")
+    width = 1000
+    shift = 10
+    mono_signal.astype(np.float16)
+    spectro = get_spectrograms(rate, mono_signal, width, shift, window_type="hann")
     signature = get_signature(spectro, k=5)
     song.set_signature(signature)
     # song.set_key(...)
     # song.set_path(...)
-    db = Database("./Library/")
+    db = Database("./Database/")
     # print(song.get_data())
     db.save_to_database(song.get_data(), filename)
 
 def identify(args):
     filename = args.filename
-    (rate, signal) = convert_file_to_signal("./Data/",filename)
-    mono_signal = signal[:,0]
-    spectro = get_spectrograms(rate, mono_signal, 10, 2, window_type="hann")
+    (rate, signal) = convert_file_to_signal("./snippets/",filename)
+    num_channels = signal.shape[-1]
+    # the song has 2 channels
+    if num_channels == 2:
+        # take the mean of the two channels
+        mono_signal = np.mean(signal, axis=1)
+    else:
+        mono_signal = signal
+    width = 1000
+    shift = 10
+    spectro = get_spectrograms(rate, mono_signal, width, shift, window_type="hann")
     signature = get_signature(spectro, k=5)
+    db = Database("./Database/")
+    threshold = 20000
+    print("start identifying")
+    matched_result = db.slowSearch(signature, threshold)
+    print(matched_result)
+    return matched_result
 
 
 def listSongs(args):
