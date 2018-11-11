@@ -130,12 +130,13 @@ def identify(args):
         mono_signal = np.mean(signal, axis=1)
     else:
         mono_signal = signal
-    width = 1000
-    shift = 10
+    resolution = 10.7
+    width = int(rate/resolution)
+    shift = int(width/2)
     spectro = get_spectrograms(rate, mono_signal, width, shift, window_type="hann")
     signature = get_signature(spectro, k=5)
     db = Database("./Database/")
-    threshold = 20000
+    threshold = 2
     print("start identifying")
     matched_result = db.slowSearch(signature, threshold)
     print(matched_result)
