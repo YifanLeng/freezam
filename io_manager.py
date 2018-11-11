@@ -94,7 +94,7 @@ def add(args):
     else:
         (rate, signal) = convert_file_to_signal("./Library/",filename)
     num_channels = signal.shape[-1]
-    # the song has 2 channels
+    # turn stereo into mono signal
     if num_channels == 2:
         # take the mean of the two channels
         mono_signal = np.mean(signal, axis=1)
@@ -105,9 +105,11 @@ def add(args):
 
     song = Song(rate, mono_signal.tolist())
     song.set_info(args.title, args.artist, filename)
-    width = 1000
-    shift = 10
-    mono_signal.astype(np.float16)
+    # fix the frequency resolution to be 10.7Hz 
+    # calculate the window width = sample_rate/resolution
+    resolution = 10.7
+    width = int(rate/resolution)
+    shift = int(width/2)
     spectro = get_spectrograms(rate, mono_signal, width, shift, window_type="hann")
     signature = get_signature(spectro, k=5)
     song.set_signature(signature)

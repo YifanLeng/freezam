@@ -1,5 +1,6 @@
 import numpy
 from scipy import signal
+from scipy.signal import find_peaks
 import scipy
 ############################################
 #    Title: github source code
@@ -94,31 +95,11 @@ def apply_windows(slided_signals, window_type="hann"):
         The same dimension as the input. 
     """
     # length of each slided signal
-    nrow = slided_signals.shape[0]
-    ncol = slided_signals.shape[1]
-    window = signal.get_window(window_type, ncol)
+    n = slided_signals.shape[-1]
+    window = signal.get_window(window_type, n)
     print(slided_signals.shape)
     print(window.shape)
-    # to deal with memory error, we divide the slided signals
-    # so that each part has < 5k rows
-    start_row = 0
-    step = 50000
-    windowed_signals  = []
-    while nrow > step:
-        end_row = start_row + step
-        temp = slided_signals[start_row:end_row,]
-        start_row = end_row
-        temp_windowed = numpy.multiply(temp, window)
-        windowed_signals.append(temp_windowed)
-        nrow = nrow-step
-    if nrow > 0:
-        temp = slided_signals[start_row:slided_signals.shape[0],]
-        temp.astype(numpy.float16)
-        print(temp.shape)
-        temp_windowed = numpy.multiply(temp, window)
-        windowed_signals.append(temp_windowed)
-    windowed_signals = numpy.concatenate(windowed_signals, axis=0)
-    #windowed_signals = numpy.multiply(slided_signals, window)
+    windowed_signals = numpy.multiply(slided_signals, window)
     return windowed_signals
 
 def get_windowed_signals(signal, rate, window_type, width, shift):
@@ -175,15 +156,20 @@ def get_spectrograms(rate, signal, width, shift, window_type="hann"):
     spectrogram = []
     for win_signal in win_signals:
         (f, Pxx) = scipy.signal.periodogram(win_signal, fs=rate, scaling='spectrum')
-        spectrogram.append((f.tolist(), Pxx.tolist()))
-        
+        spectrogram.append((f, Pxx))  
     return spectrogram
 
 def scale(x):
     """
     normalize x to a scale of 0 to 1
     """
-    return 1
+    min_x, max_x = numpy.min(x), numpy.max(x)
+    if min_x != max_x:
+        x  = (x-min_x)/(max_x-min_x)
+    else:
+        # all the numbers are the same in x
+        x = 1/len(x)
+    return x
 
 def get_signature(spectrogram, k):
     """
@@ -201,15 +187,19 @@ def get_signature(spectrogram, k):
         k peaks
     """
     signature = []
-    for (f, Pxx) in spectrogram:
-        # find the peaks of Pxx and their corresponding frequencies
-        #sig = compute_sig(f_xx)
-        f_Pxx = zip(f, Pxx)
-        # sort the spectrogram by power
-        sort_by_power = sorted(f_Pxx, key=lambda x: x[1], reverse=True)
-        # retrive the frequencies with the k largest power
-        k_largest_freq = [fp[0] for fp in sort_by_power[0:k]]
-        signature.append(k_largest_freq)
+    for (f, p) in spectrogram:
+        f_p = zip(f, p)
+        # filter out the  0<frequencies < 5k
+        f_p = list(filter(lambda x : 0 < x[0] < 5000, f_p))
+        (f, p) = zip(*f_p)
+        peak_indexes = find_peaks(p)[0]
+        f_p_peaks = [(f[i], p[i]) for i in peak_indexes]
+        # sort by power
+        sort_by_power = sorted(f_p_peaks, key=lambda x: x[1], reverse=True)
+        # retrive the frequencies with the k largest peaks in power
+        k_largest_freq = numpy.asarray([fp[0] for fp in sort_by_power[0:k]])
+        # scale the frequencies in the range of 0 to 1
+        signature.append(scale(k_largest_freq))
     return signature
 
 
