@@ -105,12 +105,13 @@ class Database:
         for i in range(len(song_sig)):
             # find the start of the window that matched the start of the snippet
             # if np.allclose(snip_start, song_sig[i], atol = threshold):
-            if spatial.distance.cosine(snip_start, song_sig[i])>threshold:
+            d = spatial.distance.cosine(snip_start, song_sig[i])
+            if d < threshold:
                 k = len(snip_sig)
                 if i+k > len(song_sig):
                     return False
                 for j in range(1, k):
-                    if spatial.distance.cosine(snip_sig[j], song_sig[i+j])<threshold:
+                    if spatial.distance.cosine(snip_sig[j], song_sig[i+j]) > threshold:
                         return False
                 return True
         return False
