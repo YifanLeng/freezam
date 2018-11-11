@@ -2,7 +2,14 @@ class Song:
     def __init__(self, rate, signal):
         self.data = {}
         self.data["sample_rate"] = rate
-        self.data["signal"] = signal
+        self.data["signal"] = Song.ndarray_to_list(signal)
+    
+    @staticmethod
+    def ndarray_to_list(arr):
+        if isinstance(arr, list):
+            return arr
+        else:
+            return arr.tolist()
     
     def set_info(self, title, artist, filename):
         self.data["title"] = title
@@ -10,7 +17,7 @@ class Song:
         self.data["filename"] = filename
 
     def set_signature(self, signature):
-        self.data["signature"] = signature
+        self.data['signature'] = Song.ndarray_to_list(signature)
     
     def set_key(self, key):
         """

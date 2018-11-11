@@ -162,6 +162,7 @@ def get_spectrograms(rate, signal, width, shift, window_type="hann"):
 def scale(x):
     """
     normalize x to a scale of 0 to 1
+    convert x to list
     """
     min_x, max_x = numpy.min(x), numpy.max(x)
     if min_x != max_x:
@@ -169,7 +170,7 @@ def scale(x):
     else:
         # all the numbers are the same in x
         x = 1/len(x)
-    return x
+    return x.tolist()
 
 def get_signature(spectrogram, k):
     """

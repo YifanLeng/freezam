@@ -112,6 +112,7 @@ def add(args):
     shift = int(width/2)
     spectro = get_spectrograms(rate, mono_signal, width, shift, window_type="hann")
     signature = get_signature(spectro, k=5)
+    print(type(signature))
     song.set_signature(signature)
     # song.set_key(...)
     # song.set_path(...)
