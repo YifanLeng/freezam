@@ -111,7 +111,7 @@ def add(args):
     width = int(rate/resolution)
     shift = int(width/2)
     spectro = get_spectrograms(rate, mono_signal, width, shift, window_type="hann")
-    signature = get_signature(spectro, k=5)
+    signature = get_signature(spectro, k=10)
     song.set_signature(signature)
     # song.set_key(...)
     # song.set_path(...)
@@ -133,12 +133,12 @@ def identify(args):
     width = int(rate/resolution)
     shift = int(width/2)
     spectro = get_spectrograms(rate, mono_signal, width, shift, window_type="hann")
-    signature = get_signature(spectro, k=5)
+    signature = get_signature(spectro, k=10)
     db = Database("./Database/")
     # threshold = 1-cosine similarity
     # It measures how disimilar two windows are. 
     # We want threshold to be small
-    threshold = 0.5
+    threshold = 0.2
     print("start identifying")
     matched_result = db.slowSearch(signature, threshold)
     print(matched_result)

@@ -68,9 +68,11 @@ class Database:
             song_signature = np.asarray(song['signature'], dtype=np.float32)
             print("start matching with")
             print(fname)
-            if Database.match(signature, song_signature, threshold):
-                matched_result.append(fname)
-        return matched_result
+            #if Database.match(signature, song_signature, threshold):
+            #    matched_result.append(fname)
+            matched_result.append(Database.match(signature, song_signature, threshold))
+        song_idx = matched_result.index(min(matched_result))
+        return search_space[song_idx]
 
     @staticmethod
     def match(snip_sig, song_sig, threshold):
@@ -88,6 +90,7 @@ class Database:
             a list of tuples with (title, artist, song's name)
             or an empty list if no match is found
         """
+        dissimilarity = []
         snip_start = snip_sig[0]
         for i in range(len(song_sig)):
             # find the start of the window that matched the start of the snippet
@@ -96,12 +99,17 @@ class Database:
             if d < threshold:
                 k = len(snip_sig)
                 if i+k > len(song_sig):
-                    return False
+                    #return False
+                    break
+                dis_snip = []
                 for j in range(1, k):
-                    if spatial.distance.cosine(snip_sig[j], song_sig[i+j]) > threshold:
-                        return False
-                return True
-        return False
+                    #if spatial.distance.cosine(snip_sig[j], song_sig[i+j]) > threshold:
+                    #    return False
+                    dis_snip.append(spatial.distance.cosine(snip_sig[j], song_sig[i+j]))
+                #return True
+                dissimilarity.append(sum(dis_snip)/len(dis_snip))
+        print(min(dissimilarity))
+        return min(dissimilarity)
 
 
         
