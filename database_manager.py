@@ -88,19 +88,6 @@ class Database:
             a list of tuples with (title, artist, song's name)
             or an empty list if no match is found
         """
-
-        def match_2D_arrays(a, b, a_start, b_start, threshold):
-            a1 = a[a_start:]
-            b1 = b[b_start:]
-            if len(a1) != len(b1):
-                return False
-            k = len(a1)
-            for i in range(k):
-                #if not np.allclose(a1[a_start+i], b1[b_start+i], atol = threshold):
-                if spatial.distance.cosine(a1[a_start+i], b1[b_start+i]) < threshold:
-                    return False
-            return True
-
         snip_start = snip_sig[0]
         for i in range(len(song_sig)):
             # find the start of the window that matched the start of the snippet

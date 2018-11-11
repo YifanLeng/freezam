@@ -134,10 +134,11 @@ def identify(args):
     shift = int(width/2)
     spectro = get_spectrograms(rate, mono_signal, width, shift, window_type="hann")
     signature = get_signature(spectro, k=5)
-    print("signature of the test snippet is")
-    print(signature)
     db = Database("./Database/")
-    threshold = 0.1
+    # threshold = 1-cosine similarity
+    # It measures how disimilar two windows are. 
+    # We want threshold to be small
+    threshold = 0.5
     print("start identifying")
     matched_result = db.slowSearch(signature, threshold)
     print(matched_result)
