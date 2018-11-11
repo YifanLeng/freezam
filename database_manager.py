@@ -95,10 +95,9 @@ class Database:
             if len(a1) != len(b1):
                 return False
             k = len(a1)
-            print(k)
             for i in range(k):
                 #if not np.allclose(a1[a_start+i], b1[b_start+i], atol = threshold):
-                if spatial.distance.euclidean(a1[a_start+i], b1[b_start+i]) > threshold:
+                if spatial.distance.cosine(a1[a_start+i], b1[b_start+i]) < threshold:
                     return False
             return True
 
@@ -106,12 +105,12 @@ class Database:
         for i in range(len(song_sig)):
             # find the start of the window that matched the start of the snippet
             # if np.allclose(snip_start, song_sig[i], atol = threshold):
-            if spatial.distance.euclidean(snip_start, song_sig[i])<threshold:
+            if spatial.distance.cosine(snip_start, song_sig[i])>threshold:
                 k = len(snip_sig)
                 if i+k > len(song_sig):
                     return False
                 for j in range(1, k):
-                    if spatial.distance.euclidean(snip_sig[j], song_sig[i+j])>threshold:
+                    if spatial.distance.cosine(snip_sig[j], song_sig[i+j])<threshold:
                         return False
                 return True
         return False
