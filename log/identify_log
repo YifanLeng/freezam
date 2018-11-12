@@ -10,3 +10,22 @@
 2018-11-11 20:15:33,248 - io_manager - INFO - find the matched song demo_6.json
 2018-11-11 21:20:21,617 - io_manager - INFO - start identifying
 2018-11-11 21:20:23,053 - io_manager - INFO - start matching with demo_1.json
+2018-11-11 22:01:06,418 - io_manager - INFO - start identifying
+2018-11-11 22:01:07,562 - io_manager - INFO - start matching with demo_1.json
+2018-11-11 22:47:02,054 - io_manager - INFO - list a summary of the songs in the library
+2018-11-11 22:49:03,654 - io_manager - INFO - list a summary of the songs in the library
+2018-11-11 22:50:33,608 - io_manager - INFO - list a summary of the songs in the library
+2018-11-11 22:50:52,207 - io_manager - INFO - list a summary of the songs in the library
+2018-11-11 22:50:53,489 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
+2018-11-11 22:50:54,767 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
+2018-11-11 22:50:55,752 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
+2018-11-11 22:50:56,614 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
+2018-11-11 22:50:58,644 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
+2018-11-11 22:51:00,051 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
+2018-11-11 22:51:15,331 - io_manager - INFO - list a summary of the songs in the library
+2018-11-11 22:51:16,472 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
+2018-11-11 22:51:17,697 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
+2018-11-11 22:51:18,608 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
+2018-11-11 22:51:19,357 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
+2018-11-11 22:51:21,184 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
+2018-11-11 22:51:22,551 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100

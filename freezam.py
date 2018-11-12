@@ -32,6 +32,7 @@ def main():
     # creat the parser for the "list" command
     parser_list = subparsers.add_parser('list', help='list all the songs in \
                                          the library')
+    parser_list.add_argument('-v', "--verbose", help="verbose mode", action='store_true')
     
     #TODO: implement listSongs function
     parser_list.set_defaults(func=listSongs)

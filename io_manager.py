@@ -8,6 +8,7 @@ from spectral_analysis import get_spectrograms, get_signature
 from database_manager import Database
 from song_manager import Song
 import logging
+import json
 
 def setuplogger(verbose, logFile):
     # create a logger for warnings
@@ -135,13 +136,20 @@ def add(args):
     signature = get_signature(spectro, k=10)
     song.set_signature(signature)
     # song.set_key(...)
-    # song.set_path(...)
+    song.set_path(filename)
     db = Database("./Database/")
     # print(song.get_data())
     db.save_to_database(song.get_data(), filename)
     logger.info('Adding the song info and signature: {} to database'.format(filename))
 
 def identify(args):
+    """
+    compute the snippet's siganature and compare it with the 
+    signatures of songs in the database. Return the closest match.
+    ----------
+    args : Namespace
+        the namespace that was pasrsed from the commind line input
+    """
     logger = setuplogger(args.verbose, "./log/identify_log")
     filename = args.filename
     (rate, signal) = convert_file_to_signal("./snippets/",filename, logger)
@@ -170,4 +178,23 @@ def identify(args):
 
 
 def listSongs(args):
-    pass
+    """
+    List a useful summary of the library contents
+    ----------
+    args : Namespace
+        the namespace that was pasrsed from the commind line input
+    """
+    logger = setuplogger(args.verbose, "./log/identify_log")
+    logger.info("list a summary of the songs in the library")
+    database = "./Database"
+    search_space = [f for f in os.listdir(database) if f.endswith('.json')]
+    # load all the songs' information
+    for fname in search_space:
+        f = open(os.path.join(database, fname))
+        song = json.loads(f.read())
+        f.close()
+        info = "The song has title {}, aritst {}, \
+        sampling rate {}".format(song['title'], song['artist'],
+        song['sample_rate'])
+        logger.info(info)
+    

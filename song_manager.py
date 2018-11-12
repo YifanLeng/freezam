@@ -1,3 +1,4 @@
+import os
 class Song:
     def __init__(self, rate, signal):
         self.data = {}
@@ -44,7 +45,10 @@ class Song:
         -------
         None
         """
-        self.data["path"] = path
+        if path.startswith("http"):
+            self.data["path"] = path
+        else:
+            self.data["path"] = os.path.join("./Library", path)
 
     def get_data(self):
         return self.data
