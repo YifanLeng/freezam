@@ -26,7 +26,7 @@ def main():
                                          the library')
     parser_idfy.add_argument("filename", help='file name in /Search directory or \
                                                its url')
-    #TODO: implement identify function
+    parser_idfy.add_argument('-v', "--verbose", help="verbose mode", action='store_true')
     parser_idfy.set_defaults(func=identify)
 
     # creat the parser for the "list" command

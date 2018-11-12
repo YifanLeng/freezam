@@ -7,7 +7,27 @@ import scipy.io.wavfile
 from spectral_analysis import get_spectrograms, get_signature
 from database_manager import Database
 from song_manager import Song
+import logging
 
+def setuplogger(verbose, logFile):
+    # create a logger for warnings
+    logging.captureWarnings(True)
+    warnings_logger = logging.getLogger('py.warnings')
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.INFO)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    file_handler = logging.FileHandler(logFile)
+    file_handler.setLevel(logging.DEBUG)
+    file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
+    warnings_logger.addHandler(file_handler)
+    stream_handler = logging.StreamHandler()
+    stream_handler.setLevel(logging.DEBUG)
+    stream_handler.setFormatter(formatter)
+    warnings_logger.addHandler(stream_handler)
+    if verbose:
+        logger.addHandler(stream_handler)
+    return logger
 
 def read_and_convert_to_signal(directory, filename):
     """
@@ -37,7 +57,7 @@ def read_and_convert_to_signal(directory, filename):
         (rate, signal) = scipy.io.wavfile.read(filepath)
     return (rate, signal)
 
-def convert_file_to_signal(directory, filename):
+def convert_file_to_signal(directory, filename, logger):
     """
     cheack the validity of the audio file
     download the audio file given its url
@@ -61,16 +81,18 @@ def convert_file_to_signal(directory, filename):
     rate, signal = None, None
     # find the path of the file
     if isFile is None:
-        raise Exception("Invalid sound file type \
+        logger.error("Invalid sound file format")
+        raise Exception("Invalid sound file format \
                          only accept wav, mp3, ogg, flv, mp4, wma and aac")
     elif not os.path.exists(directory+filename):
+        logger.error("Sound file not found in {}".format(directory))
         raise Exception("Sound file not found in "+directory)
     else:
         try:
             # read in the sound file and convert to wav
             (rate, signal) = read_and_convert_to_signal(directory, filename)
         except Exception:
-            print("Failed to convert the sound file to wav format")
+            logger.error("Failed to convert the sound file {} to wav format".format(filename))
     return (rate, signal)
         
 
@@ -82,6 +104,7 @@ def add(args):
     args : Namespace
         the namespace that was pasrsed from the commind line input
     """
+    logger = setuplogger(args.verbose, "./log/add_log")
     # check if the user provides an audio file or url
     # http://www.music.helsinki.fi/tmt/opetus/uusmedia/esim/a2002011001-e02-128k.mp3
     filename = args.filename
@@ -90,16 +113,14 @@ def add(args):
         url = filename
         name = url.split('/')[-1]
         (filepath, _) = urllib.request.urlretrieve(url, './Library/'+name)
-        (rate, signal) = convert_file_to_signal("", filepath)
+        (rate, signal) = convert_file_to_signal("", filepath, logger)
     else:
-        (rate, signal) = convert_file_to_signal("./Library/",filename)
+        (rate, signal) = convert_file_to_signal("./Library/",filename, logger)
     num_channels = signal.shape[-1]
     # turn stereo into mono signal
     if num_channels == 2:
         # take the mean of the two channels
         mono_signal = np.mean(signal, axis=1)
-        print(mono_signal.shape)
-        print(mono_signal.shape[-1])
     else:
         mono_signal = signal
 
@@ -118,11 +139,14 @@ def add(args):
     db = Database("./Database/")
     # print(song.get_data())
     db.save_to_database(song.get_data(), filename)
+    logger.info('Adding the song info and signature: {} to database'.format(filename))
 
 def identify(args):
+    logger = setuplogger(args.verbose, "./log/identify_log")
     filename = args.filename
-    (rate, signal) = convert_file_to_signal("./snippets/",filename)
+    (rate, signal) = convert_file_to_signal("./snippets/",filename, logger)
     num_channels = signal.shape[-1]
+
     # the song has 2 channels
     if num_channels == 2:
         # take the mean of the two channels
@@ -139,9 +163,9 @@ def identify(args):
     # It measures how disimilar two windows are. 
     # We want threshold to be small
     threshold = 0.2
-    print("start identifying")
-    matched_result = db.slowSearch(signature, threshold)
-    print(matched_result)
+    logger.info("start identifying")
+    matched_result = db.slowSearch(signature, threshold, logger)
+    logger.info("find the matched song {}".format(matched_result))
     return matched_result
 
 

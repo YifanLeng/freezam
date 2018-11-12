@@ -25,7 +25,7 @@ class Database:
             json.dump(song, fp)
         # add the song' signatures 
 
-    def remove_from_database(self, filename):
+    def remove_from_database(self, filename, logger):
         """
         remove a song object into the database
         ----------
@@ -36,10 +36,14 @@ class Database:
         result : int
             0 if the removal fails and 1 if it succedds
         """
-        pass
+        f = os.path.join(self.path, filename)
+        try:
+            os.remove(f)
+        except:
+            logger.error("Failed tp remove {} from the database".format)
+        
 
-    
-    def slowSearch(self, signature, threshold):
+    def slowSearch(self, signature, threshold, logger):
         """
         match the signature of a song with the signatures
         stored in the data base
@@ -65,9 +69,9 @@ class Database:
             song = json.loads(f.read())
             f.close()
             # convert to 2D numpy array
+            
             song_signature = np.asarray(song['signature'], dtype=np.float32)
-            print("start matching with")
-            print(fname)
+            logger.info("start matching with {}".format(fname))
             #if Database.match(signature, song_signature, threshold):
             #    matched_result.append(fname)
             matched_result.append(Database.match(signature, song_signature, threshold))
@@ -108,7 +112,6 @@ class Database:
                     dis_snip.append(spatial.distance.cosine(snip_sig[j], song_sig[i+j]))
                 #return True
                 dissimilarity.append(sum(dis_snip)/len(dis_snip))
-        print(min(dissimilarity))
         return min(dissimilarity)
 
 
