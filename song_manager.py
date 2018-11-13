@@ -1,6 +1,6 @@
 import os
 import re
-# from pydub import AudioSegment
+from pydub import AudioSegment
 import numpy as np
 import urllib.request
 import scipy.io.wavfile
@@ -107,7 +107,7 @@ class Song:
             (rate, signal) = Song.convert_file_to_signal(filepath, logger)
         else:
             (rate, signal) = Song.convert_file_to_signal(self.path, logger)
-
+       
         num_channels = signal.shape[-1]
         # turn stereo into mono signal
         if num_channels == 2:

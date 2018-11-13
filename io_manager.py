@@ -72,9 +72,7 @@ def identify(args):
     threshold = 0.2
     logger.info("start identifying")
     matched_result = db.slowSearch(snippet.signature, threshold, logger)
-    print(matched_result)
     logger.info("find the matched song {}".format(matched_result))
-    return matched_result
 
 
 def listSongs(args):

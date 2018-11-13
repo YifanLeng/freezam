@@ -6,7 +6,7 @@ from spectral_analysis import sliding_window
 from spectral_analysis import get_windowed_signals
 from spectral_analysis import get_spectrograms
 from spectral_analysis import get_signature
-
+from scipy.signal import find_peaks
 
 
 class TestSpectralAnalysis(unittest.TestCase):
@@ -43,37 +43,38 @@ class TestSpectralAnalysis(unittest.TestCase):
         window = signal.get_window("hann", signals.shape[-1])
         windowed_signals = np.multiply(signals, window)
         self.assertTrue(np.allclose(windowed_signals, \
-                  get_windowed_signals(self.sine, self.fs, "hann", 1, 0.1)))
+                  get_windowed_signals(self.sine, self.fs, "hann", size, stepsize)))
 
-        size = int(round(1 * self.fs))
-        stepsize = int(round(0.1 * self.fs))
+        
         signals = sliding_window(self.wn, size, stepsize)
         window = signal.get_window("hann", signals.shape[-1])
         windowed_signals = np.multiply(signals, window)
         self.assertTrue(np.allclose(windowed_signals, \
-                  get_windowed_signals(self.wn, self.fs, "hann", 1, 0.1)))
+                  get_windowed_signals(self.wn, self.fs, "hann", size, stepsize)))
 
     def test_get_spectrograms(self):
-        sptrogm = get_spectrograms(self.fs, self.sine_small, 100/self.fs, 0.1)
+        sptrogm = get_spectrograms(self.fs, self.sine_small, 100, 50)
         # use the first windowed signal as test
         f_test = np.array(sptrogm[0][0])
         Pxx_test = np.array(sptrogm[0][1])
-        # the freqencies on which to estimate spectrogram are k/100 * 1
-        # where 0 <= k <= 50
-        # So the frequencies are [0, 0.01, 0.02 ... 0.05]
-        print(np.max(Pxx_test))
-        freq = np.arange(0, 0.51, 0.01)
+        # the freqencies on which to estimate spectrogram are 0 + k*sample_rate/window_width
+        # where 0 <= k <= n/2 where n is the length of the signal
+        sample_rate = self.fs
+        window_width = 100
+        n = len(self.sine_small)
+        freq = np.arange(0,(n/2+1)*sample_rate/window_width, sample_rate/window_width)
         self.assertTrue(np.allclose(freq, np.round(f_test, 2)))
         # According to the formula in the handout, the maximum spectrogram is
-        # calculated to be 22.69697
-        self.assertTrue(np.allclose(22.69697, np.max(np.round(Pxx_test, 5))))
+        # calculated to be 0.1238
+        self.assertTrue(np.allclose(0.1239, np.max(np.round(Pxx_test, 4))))
 
     def test_get_signature(self):
         # the 5 frequencies that match the largest 5 
-        #  magnitudes in spectral density are [0.12, 0.13, ... 0.16]
-        signature = np.arange(0.12, 0.17, 0.01)
-        sptrogm = get_spectrograms(self.fs, self.sine_small, 100/self.fs, 0.1)
-        self.assertTrue(np.allclose(signature, get_signature(sptrogm, 5)))
+        #  peaks in spectral density are [0.12, 0.13, ... 0.16]
+        sptgram = get_spectrograms(500, self.sine, 100, 50)
+        (f, p) = sptgram[0]
+        f_sig = 1/len([f[np.argmax(p)]])
+        self.assertTrue(np.allclose(f_sig, get_signature(sptgram, 1)[0][0]))
         
 
 if __name__ == '__main__':

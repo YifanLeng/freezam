@@ -1,0 +1,145 @@
+2018-11-12 21:55:03,835 - io_manager - ERROR - Failed to convert the sound file ./test_audio/test.wav to wav format
+2018-11-12 21:56:06,729 - io_manager - ERROR - Failed to convert the sound file ./test_audio/test.wav to wav format
+2018-11-12 22:11:22,939 - io_manager - ERROR - Failed to convert the sound file ./test_audio/test.wav to wav format
+2018-11-12 22:22:40,648 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\song_manager.py:82: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio/sine.wav'>
+  (rate, signal) = Song.read_and_convert_to_signal(filePath)
+
+2018-11-12 22:22:40,648 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\song_manager.py:82: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio/sine.wav'>
+  (rate, signal) = Song.read_and_convert_to_signal(filePath)
+
+2018-11-12 22:25:22,364 - io_manager - ERROR - Sound file not found in https://ia600209.us.archive.org/12/items/SineWaveStudiosSineWaveTestFile/sinetest.mp3
+2018-11-12 22:25:22,364 - io_manager - ERROR - Sound file not found in https://ia600209.us.archive.org/12/items/SineWaveStudiosSineWaveTestFile/sinetest.mp3
+2018-11-12 22:29:29,708 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\song_manager.py:82: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio/sine.wav'>
+  (rate, signal) = Song.read_and_convert_to_signal(filePath)
+
+2018-11-12 22:29:29,708 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\song_manager.py:82: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio/sine.wav'>
+  (rate, signal) = Song.read_and_convert_to_signal(filePath)
+
+2018-11-12 22:29:44,564 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\song_manager.py:82: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio\\sinetest.wav'>
+  (rate, signal) = Song.read_and_convert_to_signal(filePath)
+
+2018-11-12 22:29:44,564 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\song_manager.py:82: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio\\sinetest.wav'>
+  (rate, signal) = Song.read_and_convert_to_signal(filePath)
+
+2018-11-12 22:29:44,564 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\song_manager.py:82: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio\\sinetest.wav'>
+  (rate, signal) = Song.read_and_convert_to_signal(filePath)
+
+2018-11-12 22:51:56,105 - io_manager - ERROR - <built-in method format of str object at 0x000001DB10234870>
+2018-11-12 22:51:56,105 - io_manager - ERROR - <built-in method format of str object at 0x000001DB10234870>
+2018-11-12 22:55:59,178 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 22:55:59,178 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 22:55:59,178 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 22:56:03,750 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 22:56:03,750 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 22:56:03,750 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 22:56:06,734 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 22:56:06,734 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 22:56:06,734 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 22:56:09,442 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 22:56:09,442 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 22:56:09,442 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 22:56:10,951 - io_manager - INFO - start matching with demo_5.json
+2018-11-12 22:56:10,951 - io_manager - INFO - start matching with demo_5.json
+2018-11-12 22:56:10,951 - io_manager - INFO - start matching with demo_5.json
+2018-11-12 22:56:18,105 - io_manager - INFO - start matching with demo_6.json
+2018-11-12 22:56:18,105 - io_manager - INFO - start matching with demo_6.json
+2018-11-12 22:56:18,105 - io_manager - INFO - start matching with demo_6.json
+2018-11-12 22:56:23,477 - io_manager - INFO - start matching with test1.json
+2018-11-12 22:56:23,477 - io_manager - INFO - start matching with test1.json
+2018-11-12 22:56:23,477 - io_manager - INFO - start matching with test1.json
+2018-11-12 23:41:56,077 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 23:41:56,077 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 23:41:56,077 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 23:42:01,579 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 23:42:01,579 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 23:42:01,579 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 23:42:05,080 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 23:42:05,080 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 23:42:05,080 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 23:42:08,247 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 23:42:08,247 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 23:42:08,247 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 23:42:09,778 - io_manager - INFO - start matching with demo_5.json
+2018-11-12 23:42:09,778 - io_manager - INFO - start matching with demo_5.json
+2018-11-12 23:42:09,778 - io_manager - INFO - start matching with demo_5.json
+2018-11-12 23:42:16,816 - io_manager - INFO - start matching with demo_6.json
+2018-11-12 23:42:16,816 - io_manager - INFO - start matching with demo_6.json
+2018-11-12 23:42:16,816 - io_manager - INFO - start matching with demo_6.json
+2018-11-12 23:42:22,546 - io_manager - INFO - start matching with test1.json
+2018-11-12 23:42:22,546 - io_manager - INFO - start matching with test1.json
+2018-11-12 23:42:22,546 - io_manager - INFO - start matching with test1.json
+2018-11-12 23:42:22,550 - io_manager - INFO - start matching with test2.json
+2018-11-12 23:42:22,550 - io_manager - INFO - start matching with test2.json
+2018-11-12 23:42:22,550 - io_manager - INFO - start matching with test2.json
+2018-11-12 23:45:12,699 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 23:45:12,699 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 23:45:12,699 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 23:45:17,925 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 23:45:17,925 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 23:45:17,925 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 23:45:21,291 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 23:45:21,291 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 23:45:21,291 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 23:45:24,130 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 23:45:24,130 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 23:45:24,130 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 23:45:25,750 - io_manager - INFO - start matching with demo_5.json
+2018-11-12 23:45:25,750 - io_manager - INFO - start matching with demo_5.json
+2018-11-12 23:45:25,750 - io_manager - INFO - start matching with demo_5.json
+2018-11-12 23:45:33,035 - io_manager - INFO - start matching with demo_6.json
+2018-11-12 23:45:33,035 - io_manager - INFO - start matching with demo_6.json
+2018-11-12 23:45:33,035 - io_manager - INFO - start matching with demo_6.json
+2018-11-12 23:45:39,150 - io_manager - INFO - start matching with test1.json
+2018-11-12 23:45:39,150 - io_manager - INFO - start matching with test1.json
+2018-11-12 23:45:39,150 - io_manager - INFO - start matching with test1.json
+2018-11-12 23:45:39,150 - io_manager - INFO - start matching with test2.json
+2018-11-12 23:45:39,150 - io_manager - INFO - start matching with test2.json
+2018-11-12 23:45:39,150 - io_manager - INFO - start matching with test2.json
+2018-11-12 23:48:37,060 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 23:48:37,060 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 23:48:37,060 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 23:48:42,153 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 23:48:42,153 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 23:48:42,153 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 23:48:45,476 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 23:48:45,476 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 23:48:45,476 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 23:48:48,279 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 23:48:48,279 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 23:48:48,279 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 23:48:49,861 - io_manager - INFO - start matching with demo_5.json
+2018-11-12 23:48:49,861 - io_manager - INFO - start matching with demo_5.json
+2018-11-12 23:48:49,861 - io_manager - INFO - start matching with demo_5.json
+2018-11-12 23:48:57,056 - io_manager - INFO - start matching with demo_6.json
+2018-11-12 23:48:57,056 - io_manager - INFO - start matching with demo_6.json
+2018-11-12 23:48:57,056 - io_manager - INFO - start matching with demo_6.json
+2018-11-12 23:49:03,060 - io_manager - INFO - start matching with test1.json
+2018-11-12 23:49:03,060 - io_manager - INFO - start matching with test1.json
+2018-11-12 23:49:03,060 - io_manager - INFO - start matching with test1.json
+2018-11-12 23:49:03,060 - io_manager - INFO - start matching with test2.json
+2018-11-12 23:49:03,060 - io_manager - INFO - start matching with test2.json
+2018-11-12 23:49:03,060 - io_manager - INFO - start matching with test2.json
+2018-11-12 23:49:03,072 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 23:49:03,072 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 23:49:03,072 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 23:49:03,084 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 23:49:03,084 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 23:49:03,084 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 23:49:03,092 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 23:49:03,092 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 23:49:03,092 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 23:49:03,101 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 23:49:03,101 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 23:49:03,101 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 23:49:03,120 - io_manager - INFO - start matching with demo_5.json
+2018-11-12 23:49:03,120 - io_manager - INFO - start matching with demo_5.json
+2018-11-12 23:49:03,120 - io_manager - INFO - start matching with demo_5.json
+2018-11-12 23:49:03,135 - io_manager - INFO - start matching with demo_6.json
+2018-11-12 23:49:03,135 - io_manager - INFO - start matching with demo_6.json
+2018-11-12 23:49:03,135 - io_manager - INFO - start matching with demo_6.json
+2018-11-12 23:49:03,135 - io_manager - INFO - start matching with test1.json
+2018-11-12 23:49:03,135 - io_manager - INFO - start matching with test1.json
+2018-11-12 23:49:03,135 - io_manager - INFO - start matching with test1.json
+2018-11-12 23:49:03,135 - io_manager - INFO - start matching with test2.json
+2018-11-12 23:49:03,135 - io_manager - INFO - start matching with test2.json
+2018-11-12 23:49:03,135 - io_manager - INFO - start matching with test2.json

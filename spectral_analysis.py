@@ -167,7 +167,7 @@ def scale(x):
         x  = (x-min_x)/(max_x-min_x)
     else:
         # all the numbers are the same in x
-        x = 1/len(x)
+        x = numpy.asarray([1/len(x) for i in range(len(x))])
     return x.tolist()
 
 def get_signature(spectrogram, k):

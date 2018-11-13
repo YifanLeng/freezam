@@ -43,9 +43,10 @@ class Database:
         result : int
             0 if the removal fails and 1 if it succedds
         """
-        f = os.path.join(self.path, filename)
+        songname = filename.split(".")[0]
+        filePath = os.path.join(self.path, songname + '.json')
         try:
-            os.remove(f)
+            os.remove(filePath)
         except:
             logger.error("Failed tp remove {} from the database".format)
         
@@ -70,9 +71,10 @@ class Database:
         # start matching from the start of a song's signature
         search_space = [f for f in os.listdir(database) if f.endswith('.json')]
         matched_result = []
+        matched_songs = []
         # load all the songs' signatures
         for fname in search_space:
-            f = open(database + fname)
+            f = open(os.path.join(database, fname))
             song = json.loads(f.read())
             f.close()
             # convert to 2D numpy array
@@ -81,9 +83,15 @@ class Database:
             logger.info("start matching with {}".format(fname))
             #if Database.match(signature, song_signature, threshold):
             #    matched_result.append(fname)
-            matched_result.append(Database.match(signature, song_signature, threshold))
-        song_idx = matched_result.index(min(matched_result))
-        return search_space[song_idx]
+            d = Database.match(signature, song_signature, threshold)
+            if d < sys.maxsize:
+                matched_result.append(d)
+                matched_songs.append(fname[:-5])
+        if len(matched_result) == 0:
+            return None
+        else:
+            song_idx = matched_result.index(min(matched_result))
+            return matched_songs[song_idx]
 
     @staticmethod
     def match(snip_sig, song_sig, threshold):
@@ -102,7 +110,8 @@ class Database:
             or an empty list if no match is found
         """
         dissimilarity = [sys.maxsize]
-
+        if len(snip_sig) == 0 or len(song_sig) == 0:
+            return sys.maxsize
         if len(snip_sig) > len(song_sig):
             m = len(snip_sig)
             n = len(song_sig)
