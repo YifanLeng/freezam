@@ -18,6 +18,7 @@ def main():
     parser_add.add_argument('-a', "--artist", help='artist of the song')
     parser_add.add_argument("filename", help='audio file name in /Data directory or \
                                               its url')
+    parser_add.add_argument('-v', "--verbose", help="verbose mode", action='store_true')
     parser_add.set_defaults(func=add)
     
 

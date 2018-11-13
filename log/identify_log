@@ -29,3 +29,125 @@
 2018-11-11 22:51:19,357 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
 2018-11-11 22:51:21,184 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
 2018-11-11 22:51:22,551 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
+2018-11-12 13:11:29,829 - io_manager - INFO - start identifying
+2018-11-12 13:24:01,803 - io_manager - INFO - start identifying
+2018-11-12 13:24:01,816 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 13:25:06,588 - io_manager - INFO - start identifying
+2018-11-12 13:25:46,399 - io_manager - INFO - start identifying
+2018-11-12 13:49:33,928 - io_manager - INFO - start identifying
+2018-11-12 13:50:37,695 - io_manager - INFO - start identifying
+2018-11-12 13:50:57,807 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 13:51:02,956 - io_manager - INFO - start identifying
+2018-11-12 13:51:02,968 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 13:51:04,253 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 13:51:05,253 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 13:56:36,645 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 13:56:41,734 - io_manager - INFO - start identifying
+2018-11-12 13:56:41,745 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 13:56:43,049 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 13:56:44,161 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 13:56:51,147 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 13:56:56,205 - io_manager - INFO - start identifying
+2018-11-12 13:56:56,218 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 13:56:57,558 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 13:56:58,546 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 13:58:48,841 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 13:58:54,273 - io_manager - INFO - start identifying
+2018-11-12 13:58:54,290 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 13:58:55,618 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 13:58:56,659 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 14:01:08,659 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 14:01:14,111 - io_manager - INFO - start identifying
+2018-11-12 14:01:14,126 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 14:01:15,599 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 14:01:16,637 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 14:02:13,351 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 14:02:18,537 - io_manager - INFO - start identifying
+2018-11-12 14:02:18,556 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 14:02:19,833 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 14:02:20,872 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 14:03:24,728 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 14:03:30,153 - io_manager - INFO - start identifying
+2018-11-12 14:03:30,167 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 14:03:31,527 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 14:03:32,528 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 14:09:48,072 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 14:09:53,123 - io_manager - INFO - start identifying
+2018-11-12 14:09:53,128 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 14:09:54,397 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 14:09:55,409 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 14:10:21,672 - io_manager - ERROR - Sound file not found in ./Library/
+2018-11-12 14:23:36,018 - io_manager - INFO - start identifying
+2018-11-12 14:23:36,029 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 14:24:21,024 - io_manager - ERROR - Sound file not found in ./snippets\demo_1.wav
+2018-11-12 14:25:37,192 - io_manager - ERROR - Sound file not found in ./snippets\demo_1.wav
+2018-11-12 14:25:52,791 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 14:25:58,090 - io_manager - INFO - start identifying
+2018-11-12 14:25:58,102 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 14:25:59,447 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 14:26:00,493 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 18:01:30,985 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 18:01:35,492 - io_manager - INFO - start identifying
+2018-11-12 18:01:35,507 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 18:01:36,660 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 18:01:37,566 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 18:01:44,209 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 18:04:42,103 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 18:04:46,625 - io_manager - INFO - start identifying
+2018-11-12 18:04:46,641 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 18:04:47,774 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 18:04:48,696 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 18:04:55,047 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 18:04:58,580 - io_manager - INFO - start matching with demo_5.json
+2018-11-12 18:05:06,059 - io_manager - INFO - start matching with demo_6.json
+2018-11-12 18:05:06,848 - io_manager - INFO - find the matched song demo_1.json
+2018-11-12 18:05:36,116 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 18:05:40,903 - io_manager - INFO - start identifying
+2018-11-12 18:05:40,924 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 18:05:42,073 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 18:05:42,992 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 18:05:48,809 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 18:05:51,871 - io_manager - INFO - start matching with demo_5.json
+2018-11-12 18:05:59,358 - io_manager - INFO - start matching with demo_6.json
+2018-11-12 18:06:00,156 - io_manager - INFO - find the matched song demo_1.json
+2018-11-12 19:44:33,109 - io_manager - INFO - list a summary of the songs in the library
+2018-11-12 19:45:31,387 - io_manager - ERROR - Sound file not found in ./Library\demo_1_snippet.wav
+2018-11-12 19:45:54,633 - io_manager - INFO - start identifying
+2018-11-12 19:45:54,644 - io_manager - INFO - start matching with demo_1.json
+2018-11-12 19:45:59,626 - io_manager - INFO - start matching with demo_2.json
+2018-11-12 19:46:02,606 - io_manager - INFO - start matching with demo_3.json
+2018-11-12 19:46:05,175 - io_manager - INFO - start matching with demo_4.json
+2018-11-12 19:46:06,587 - io_manager - INFO - start matching with demo_5.json
+2018-11-12 19:46:13,308 - io_manager - INFO - start matching with demo_6.json
+2018-11-12 19:46:19,200 - io_manager - INFO - find the matched song demo_1.json
+2018-11-12 20:02:03,619 - io_manager - INFO - list a summary of the songs in the library
+2018-11-12 20:02:03,630 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
+2018-11-12 20:02:03,641 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
+2018-11-12 20:02:03,650 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
+2018-11-12 20:02:03,657 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
+2018-11-12 20:02:03,671 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100
+2018-11-12 20:02:03,684 - io_manager - INFO - The song has title None, aritst None,         sampling rate 44100

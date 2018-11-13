@@ -97,8 +97,6 @@ def apply_windows(slided_signals, window_type="hann"):
     # length of each slided signal
     n = slided_signals.shape[-1]
     window = signal.get_window(window_type, n)
-    print(slided_signals.shape)
-    print(window.shape)
     windowed_signals = numpy.multiply(slided_signals, window)
     return windowed_signals
 

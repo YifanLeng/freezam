@@ -1,0 +1,90 @@
+2018-11-12 11:12:17,224 - io_manager - ERROR - Failed to convert the sound file demo_1.wav to wav format
+2018-11-12 11:14:27,613 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 11:15:23,701 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 11:15:29,128 - io_manager - INFO - Adding the song info and signature: demo_1.wav to database
+2018-11-12 11:15:53,288 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 11:16:00,365 - io_manager - INFO - Adding the song info and signature: demo_1.wav to database
+2018-11-12 12:52:33,397 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 12:52:38,698 - io_manager - INFO - Adding the song info and signature: demo_1.wav to database
+2018-11-12 19:07:04,715 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:07:42,898 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:22:19,170 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:24:42,111 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:31:12,676 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:31:49,020 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:32:16,215 - io_manager - INFO - Adding the song info and signature: demo_1.wav to database
+2018-11-12 19:32:41,126 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:33:12,692 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:33:18,026 - io_manager - INFO - Adding the song info and signature: demo_1.wav to database
+2018-11-12 19:39:01,848 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:39:07,548 - io_manager - INFO - Adding the song info and signature: demo_2.wav to database
+2018-11-12 19:39:15,008 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:39:19,875 - io_manager - INFO - Adding the song info and signature: demo_3.wav to database
+2018-11-12 19:39:37,283 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:39:41,373 - io_manager - INFO - Adding the song info and signature: demo_4.wav to database
+2018-11-12 19:39:48,544 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:39:57,043 - io_manager - INFO - Adding the song info and signature: demo_5.wav to database
+2018-11-12 19:40:36,350 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:40:43,010 - io_manager - INFO - Adding the song info and signature: demo_6.wav to database
+2018-11-12 19:44:13,692 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:44:20,147 - io_manager - INFO - Adding the song info and signature: demo_6.wav to database
+2018-11-12 19:49:10,400 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:49:15,881 - io_manager - INFO - Adding the song info and signature: demo_1.wav to database
+2018-11-12 19:49:22,544 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:49:28,060 - io_manager - INFO - Adding the song info and signature: demo_2.wav to database
+2018-11-12 19:49:33,341 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:49:37,864 - io_manager - INFO - Adding the song info and signature: demo_3.wav to database
+2018-11-12 19:49:43,760 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:49:47,364 - io_manager - INFO - Adding the song info and signature: demo_4.wav to database
+2018-11-12 19:49:51,889 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:49:59,917 - io_manager - INFO - Adding the song info and signature: demo_5.wav to database
+2018-11-12 19:50:04,978 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\io\wavfile.py:273: WavFileWarning: Chunk (non-data) not understood, skipping it.
+  WavFileWarning)
+
+2018-11-12 19:50:12,103 - io_manager - INFO - Adding the song info and signature: demo_6.wav to database
