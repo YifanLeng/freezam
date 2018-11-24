@@ -1,7 +1,83 @@
 import argparse
-from io_manager import add
-from io_manager import identify
-from io_manager import listSongs
+from io_manager import setuplogger
+import os
+import json
+from song_manager import Song
+from database_manager import Database
+
+def add(args):
+    """
+    compute the song's siganature and add the song's info and 
+    signature to the database. 
+    ----------
+    args : Namespace
+        the namespace that was pasrsed from the commind line input
+    """
+    filename = args.filename
+    if filename.startswith("http"):
+        filePath = filename
+    else:
+        filePath = os.path.join("./Library", filename)
+    libPath = './Library/'
+    song = Song(args.title, args.artist, filePath, libPath, True)
+    db = Database("localhost", "postgres", "postgres", "Ivan@1995")
+    # print(song.get_data())
+    db.save_to_database(song)
+
+def identify(args):
+    """
+    compute the snippet's siganature and compare it with the 
+    signatures of songs in the database. Return the closest match.
+    ----------
+    args : Namespace
+        the namespace that was pasrsed from the commind line input
+    """
+    logger = setuplogger(args.verbose, "./log/identify_log")
+    filename = args.filename
+    if filename.startswith("http"):
+        filePath = filename
+    else:
+        filePath = os.path.join("./snippets", filename)
+    libPath = './Library/'
+    snippet = Song("recording", "user", filePath, libPath, True)
+    db = Database("localhost", "postgres", "postgres", "Ivan@1995")
+    matched_result = db.search(snippet)
+    """
+    song = Song("demo_1", "various", "./Library/demo_1.wav", libPath, False)
+    snippet_keys = ["({},{}):{}".format(h[0], h[1], h[2]) for h in snippet.hash_values]
+    song_keys = ["({},{}):{}".format(h[0], h[1], h[2]) for h in song.hash_values]
+    # check if there are same keys
+    match = []
+    
+    for k1 in snippet_keys:
+        for k2 in song_keys:
+            if k1==k2:
+                match.append(k1)
+    print(len(match))
+    """
+
+    logger.info("find the matched song {}".format(matched_result))
+
+
+def listSongs(args):
+    """
+    List a useful summary of the library contents
+    ----------
+    args : Namespace
+        the namespace that was pasrsed from the commind line input
+    """
+    logger = setuplogger(args.verbose, "./log/list_log")
+    logger.info("list a summary of the songs in the library")
+    database = "./Database"
+    search_space = [f for f in os.listdir(database) if f.endswith('.json')]
+    # load all the songs' information
+    for fname in search_space:
+        f = open(os.path.join(database, fname))
+        song = json.loads(f.read())
+        f.close()
+        info = "The song has title {}, aritst {}, sampling rate {}".format(song['title'], \
+                song['artist'], song['sample_rate'])
+        logger.info(info)
 
 def main():
     # create the top-level parser

@@ -1,8 +1,11 @@
 import os
-from database_manager import Database
-from song_manager import Song
+from urllib.parse import urlparse
+from pydub import AudioSegment 
+import numpy as np
+import urllib.request
+import scipy
+import scipy.io.wavfile
 import logging
-import json
 
 def setuplogger(verbose, logFile):
     # create a logger for warnings
@@ -24,74 +27,112 @@ def setuplogger(verbose, logFile):
         logger.addHandler(stream_handler)
     return logger
 
-def add(args):
+def convert_local_to_wav(localPath, libPath):
     """
-    compute the song's siganature and add the song's info and 
-    signature to the database. 
+    convert the local audio file to wav format
     ----------
-    args : Namespace
-        the namespace that was pasrsed from the commind line input
+    localPath : string
+        the local file path that points to the local audio file
+    libPath : string
+        the path where the converted wav file is stored
+    Returns 
+    -------
+    wavPath : 
+        the path that points to the converted file
     """
-    logger = setuplogger(args.verbose, "./log/add_log")
-    filename = args.filename
-    if filename.startswith("http"):
-        path = "./Library"
+    # check if the local file exists
+    if not os.path.isfile(localPath):
+        raise Exception('Local file: {} does not exist'.format(localPath))
     else:
-        path = os.path.join("./Library", filename)
- 
-    song = Song(args.title, args.artist, filename, path, logger)
-    song.get_signal()
-    song.get_spectrogram(plot=True)
-    song.get_songSignature(k=10)
-    db = Database("./Database/")
-    # print(song.get_data())
-    db.save_to_database(song)
-    logger.info('Adding the song info and signature: {} to database'.format(filename))
+        filename = os.path.basename(localPath)
+        extension = filename.split('.')[-1]
+        # no conversion needed for wav file
+        if extension == 'wav':
+            return localPath
 
-def identify(args):
+        read_methods = {'mp3': AudioSegment.from_mp3,
+                        'ogg': AudioSegment.from_ogg,
+                        'flv': AudioSegment.from_flv,
+                        'mp4': AudioSegment.from_file,
+                        'wma': AudioSegment.from_file,
+                        'aac': AudioSegment.from_file}
+        if extension in ['mp3', 'ogg', 'flv']:
+            audio = read_methods[extension](localPath)
+        else:
+            audio = read_methods[extension](localPath, extension)
+        # export the audio to a wav file
+        base = os.path.splitext(filename)[0]
+        wav_filename = base + '.wav'
+        wav_path = os.path.join(libPath, wav_filename)
+        wav = audio.export(wav_path, format="wav")
+        return wav.name
+
+        
+def convert_path_to_wav(filePath, libPath):
     """
-    compute the snippet's siganature and compare it with the 
-    signatures of songs in the database. Return the closest match.
+    decode the filepath and convert the audio that the path
+    points to into wav file and store the wav file in the libPath
     ----------
-    args : Namespace
-        the namespace that was pasrsed from the commind line input
+    filePath : string
+        the path that points to the audio file. The filePath could
+        be a local directory or an URL
+    libPath : string
+        the path where the converted wav file is stored
+    Returns 
+    -------
+    wavfilePath : String
+        the local directory of the converted wav file
     """
-    logger = setuplogger(args.verbose, "./log/identify_log")
-    filename = args.filename
-    if filename.startswith("http"):
-        path = filename
+    if filePath.startswith("http"):
+        # download the remote file to Library and convert to wav
+        url = filePath
+        parse = urlparse(url)
+        filename = os.path.basename(parse.path)
+        (filepath, _) = urllib.request.urlretrieve(url, os.path.join(libPath, filename))
+        wavPath = convert_local_to_wav(filepath, libPath)
+    elif filePath.endswith((".wav", ".mp3", ".ogg", ".flv", ".mp4", ".wma", ".aac")):
+        # the filePath points to a local file, convert the file to wav
+        wavPath = convert_local_to_wav(filePath, libPath)
     else:
-        path = os.path.join("./snippets", filename)
-    
-    snippet = Song("recording", "user", filename, path, logger)
-    snippet.get_songSignature(k=10)
-    db = Database("./Database/")
-    # threshold = 1-cosine similarity
-    # It measures how disimilar two windows are. 
-    # We want threshold to be small
-    threshold = 0.2
-    logger.info("start identifying")
-    matched_result = db.slowSearch(snippet.signature, threshold, logger)
-    logger.info("find the matched song {}".format(matched_result))
-
-
-def listSongs(args):
+        raise Exception("Invalid File type")
+    return wavPath
+        
+        
+def convert_to_signal(filePath, libPath):
     """
-    List a useful summary of the library contents
+    convert the valid audio file into the numpy arrays
     ----------
-    args : Namespace
-        the namespace that was pasrsed from the commind line input
+    filePath : string
+        a path to a local directory or url that points to an audio file
+    libPath :  string
+        the local directory that contains the audio files
+    Returns 
+    -------
+    (rate, signal) : tuple
+        rate is the sampling rate of the audio file.
+        signal is the numpy arrays of the avergae of channels of the wav files
     """
-    logger = setuplogger(args.verbose, "./log/list_log")
-    logger.info("list a summary of the songs in the library")
-    database = "./Database"
-    search_space = [f for f in os.listdir(database) if f.endswith('.json')]
-    # load all the songs' information
-    for fname in search_space:
-        f = open(os.path.join(database, fname))
-        song = json.loads(f.read())
-        f.close()
-        info = "The song has title {}, aritst {}, sampling rate {}".format(song['title'], \
-                song['artist'], song['sample_rate'])
-        logger.info(info)
-    
+    # convert the audio file that the filePath points to into wav file
+    wavPath = convert_path_to_wav(filePath, libPath)
+    (rate, signal) = scipy.io.wavfile.read(wavPath)
+    # delete the converted wav files if the original file is not wav format
+    # if not filePath.endswith(".wav"):
+        # os.remove(wavPath)
+    num_channels = signal.shape[-1]
+    # turn stereo into mono signal
+    if num_channels == 2:
+        # take the mean of the two channels
+        mono_signal = np.mean(signal, axis=1)
+    else:
+        mono_signal = signal
+    # downsample the signal with a sample rate of 8000 Hz
+    out_rate = 8000
+    if rate > out_rate:
+        ds_factor = int(rate/out_rate)
+        mono_signal = scipy.signal.resample_poly(mono_signal, 1, ds_factor)
+
+    return (out_rate, mono_signal)
+  
+
+
+

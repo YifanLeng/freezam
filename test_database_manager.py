@@ -25,16 +25,16 @@ class TestDatabase(unittest.TestCase):
     def setUp(self):
         self.db = Database("./Database")
         self.logger = setuplogger(False, "./log/test_log")
-        self.song1 = Song("test1", "tester", "test1.wav", "./test/test1.wav", self.logger)
-        self.song2 = Song("test2", "tester", "test2.wav", "./test/test2.wav", self.logger)
+        self.song1 = Song("sinetest", "unknown", "./test_audio/sinetest.wav", "./test_audio/", self.logger)
+        self.song2 = Song("sine", "unknown", "./test_audio/sine.mp3", "./test_audio/", self.logger)
         
 
     def test_save_to_database(self):
         self.db.save_to_database(self.song1)
         self.db.save_to_database(self.song2)
         self.db_files = getListOfFiles("./Database")
-        self.assertTrue("./Database\\test1.json" in self.db_files)
-        self.assertTrue("./Database\\test2.json" in self.db_files)
+        self.assertTrue("./Database\\sinetest.json" in self.db_files)
+        self.assertTrue("./Database\\sine.json" in self.db_files)
     
 
     def test_remove_from_database(self):
@@ -48,12 +48,11 @@ class TestDatabase(unittest.TestCase):
         
 
     def test_slowSearch(self):
-        snippet = Song("snippet", "unknown", "demo_1_snippet.wav", \
-                       "./snippets/demo_1_snippet.wav", self.logger)
-        snippet.get_songSignature(k=10)
+        snippet = Song("demo_1_snippet", "unknown", "./snippets/demo_1_snippet.wav", \
+                       "./snippets/", self.logger)
         threshold = 0.2
         self.assertEqual("demo_1", self.db.slowSearch(snippet.signature, threshold, self.logger))
-        self.assertEqual(None, self.db.slowSearch(self.song1.signature, threshold, self.logger))
+        self.assertEqual('sine', self.db.slowSearch(self.song1.signature, threshold, self.logger))
         
 if __name__ == '__main__':
     unittest.main()

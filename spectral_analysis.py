@@ -2,6 +2,8 @@ import numpy
 from scipy import signal
 from scipy.signal import find_peaks
 import scipy
+import functools 
+import matplotlib.pyplot as plt
 ############################################
 #    Title: github source code
 #    Author: nils-werner
@@ -127,7 +129,7 @@ def get_windowed_signals(signal, rate, window_type, width, shift):
     return win_signals
 
     
-def get_spectrograms(rate, signal, width, shift, window_type="hann"):
+def get_spectrogram(rate, signal, width, shift, filename, plot, window_type="hann"):
     """
     slide the signal by width and shift and apply
     the window function on the slided signals
@@ -154,7 +156,12 @@ def get_spectrograms(rate, signal, width, shift, window_type="hann"):
     spectrogram = []
     for win_signal in win_signals:
         (f, Pxx) = scipy.signal.periodogram(win_signal, fs=rate, scaling='spectrum')
-        spectrogram.append((f, Pxx))  
+        spectrogram.append((f, Pxx))
+    if plot:
+        plot_name = "./spectrograms/"+filename[:-4]+".png"
+        plt.specgram(signal,Fs=rate)
+        plt.savefig(plot_name)
+        plt.close()
     return spectrogram
 
 def scale(x):
@@ -167,7 +174,7 @@ def scale(x):
         x  = (x-min_x)/(max_x-min_x)
     else:
         # all the numbers are the same in x
-        x = numpy.asarray([1/len(x) for i in range(len(x))])
+        x = numpy.asarray([1/len(x) for i in range(len(x)) ])
     return x.tolist()
 
 def get_signature(spectrogram, k):
@@ -200,8 +207,62 @@ def get_signature(spectrogram, k):
         # scale the frequencies in the range of 0 to 1
         signature.append(scale(k_largest_freq))
     return signature
+                
 
+def get_constellation_map(spectrogram, filename, plot):
+    window_id = 0
+    constellation_map = []
+    for (f, p) in spectrogram:
+        peak_inds = find_peaks(p)[0]
+        inds_powers = [(i, p[i]) for i in peak_inds]
+        sort_by_power = sorted(inds_powers, key=lambda x: x[1], reverse=True)    
+        # retrive the frequency indices with the k most intensity peaks in power
+        k = 30
+        points = [(window_id,ip[0]) for ip in sort_by_power[0:k]]
+        window_id += 1
+        constellation_map.append(points)
+        # constellation_map.append(freq_inds)
+    if plot:
+        flat_const_map = functools.reduce(lambda x,y: x+y, constellation_map)
+        plot_name = "./spectrograms/"+filename[:-4]+"_const_map.png"
+        (window_id, freq_bins) = zip(*flat_const_map)
+        plt.scatter(window_id, freq_bins, s=0.5)
+        plt.savefig(plot_name)
+        plt.close()
+    return constellation_map
 
+def combinatorial_hashing(constellation_map):
+    # convert points to pairs
+    n = len(constellation_map)
+    del_t, del_f, fan_out = 35, 30, 10
+    hash_value = []
+    for i in range(n):
+        for j in range(len(constellation_map[i])):
+            pairs = 0 # track the number of pairs found
+            t1, f1 = i, constellation_map[i][j][1]
+            # pair with points vertically in the current window
+            for k in range(j+1, len(constellation_map[i])):
+                t2, f2 = i, constellation_map[i][k][1]
+                if abs(f2-f1) < del_f:
+                    if pairs < fan_out:
+                        pairs += 1
+                        hash_value.append((f1, f2, (t2-t1), t1))
+                    else:
+                        break
+            # pair with points after the current window
+            for w_k in range(i+1, min(i+1+del_t, n)):
+                if pairs >= fan_out:
+                    break
+                for f_k in range(len(constellation_map[w_k])):
+                    t2, f2 = w_k, constellation_map[w_k][f_k][1]
+                    if abs(f2-f1) < del_f:
+                        if pairs < fan_out:
+                            pairs += 1
+                            hash_value.append((f1, f2, (t2-t1), t1))
+                        else:
+                            break
+    return hash_value
+                
 
 
 

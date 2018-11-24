@@ -143,3 +143,112 @@
 2018-11-12 23:49:03,135 - io_manager - INFO - start matching with test2.json
 2018-11-12 23:49:03,135 - io_manager - INFO - start matching with test2.json
 2018-11-12 23:49:03,135 - io_manager - INFO - start matching with test2.json
+2018-11-20 21:34:25,059 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\io_manager.py:94: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio/sine.wav'>
+  wavPath = convert_local_to_wav(filePath, libPath)
+
+2018-11-20 21:37:44,200 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\io_manager.py:94: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio/sine.wav'>
+  wavPath = convert_local_to_wav(filePath, libPath)
+
+2018-11-20 21:37:45,754 - io_manager - ERROR - <built-in method format of str object at 0x000001FBF5CE4870>
+2018-11-20 21:37:45,754 - io_manager - ERROR - <built-in method format of str object at 0x000001FBF5CE4870>
+2018-11-20 21:37:54,477 - io_manager - INFO - start matching with demo_1.json
+2018-11-20 21:37:54,477 - io_manager - INFO - start matching with demo_1.json
+2018-11-20 21:37:54,477 - io_manager - INFO - start matching with demo_1.json
+2018-11-20 21:37:59,082 - io_manager - INFO - start matching with demo_2.json
+2018-11-20 21:37:59,082 - io_manager - INFO - start matching with demo_2.json
+2018-11-20 21:37:59,082 - io_manager - INFO - start matching with demo_2.json
+2018-11-20 21:38:02,050 - io_manager - INFO - start matching with demo_3.json
+2018-11-20 21:38:02,050 - io_manager - INFO - start matching with demo_3.json
+2018-11-20 21:38:02,050 - io_manager - INFO - start matching with demo_3.json
+2018-11-20 21:38:04,568 - io_manager - INFO - start matching with demo_4.json
+2018-11-20 21:38:04,568 - io_manager - INFO - start matching with demo_4.json
+2018-11-20 21:38:04,568 - io_manager - INFO - start matching with demo_4.json
+2018-11-20 21:38:06,005 - io_manager - INFO - start matching with demo_5.json
+2018-11-20 21:38:06,005 - io_manager - INFO - start matching with demo_5.json
+2018-11-20 21:38:06,005 - io_manager - INFO - start matching with demo_5.json
+2018-11-20 21:38:12,435 - io_manager - INFO - start matching with demo_6.json
+2018-11-20 21:38:12,435 - io_manager - INFO - start matching with demo_6.json
+2018-11-20 21:38:12,435 - io_manager - INFO - start matching with demo_6.json
+2018-11-20 21:38:17,733 - io_manager - INFO - start matching with sine.json
+2018-11-20 21:38:17,733 - io_manager - INFO - start matching with sine.json
+2018-11-20 21:38:17,733 - io_manager - INFO - start matching with sine.json
+2018-11-20 21:38:18,014 - io_manager - INFO - start matching with sinetest.json
+2018-11-20 21:38:18,014 - io_manager - INFO - start matching with sinetest.json
+2018-11-20 21:38:18,014 - io_manager - INFO - start matching with sinetest.json
+2018-11-20 21:38:18,300 - io_manager - INFO - start matching with demo_1.json
+2018-11-20 21:38:18,300 - io_manager - INFO - start matching with demo_1.json
+2018-11-20 21:38:18,300 - io_manager - INFO - start matching with demo_1.json
+2018-11-20 21:38:32,688 - io_manager - INFO - start matching with demo_2.json
+2018-11-20 21:38:32,688 - io_manager - INFO - start matching with demo_2.json
+2018-11-20 21:38:32,688 - io_manager - INFO - start matching with demo_2.json
+2018-11-20 21:38:39,597 - io_manager - INFO - start matching with demo_3.json
+2018-11-20 21:38:39,597 - io_manager - INFO - start matching with demo_3.json
+2018-11-20 21:38:39,597 - io_manager - INFO - start matching with demo_3.json
+2018-11-20 21:38:50,995 - io_manager - INFO - start matching with demo_4.json
+2018-11-20 21:38:50,995 - io_manager - INFO - start matching with demo_4.json
+2018-11-20 21:38:50,995 - io_manager - INFO - start matching with demo_4.json
+2018-11-20 21:38:57,733 - io_manager - INFO - start matching with demo_5.json
+2018-11-20 21:38:57,733 - io_manager - INFO - start matching with demo_5.json
+2018-11-20 21:38:57,733 - io_manager - INFO - start matching with demo_5.json
+2018-11-20 21:39:30,313 - io_manager - INFO - start matching with demo_6.json
+2018-11-20 21:39:30,313 - io_manager - INFO - start matching with demo_6.json
+2018-11-20 21:39:30,313 - io_manager - INFO - start matching with demo_6.json
+2018-11-20 21:40:07,766 - io_manager - INFO - start matching with sine.json
+2018-11-20 21:40:07,766 - io_manager - INFO - start matching with sine.json
+2018-11-20 21:40:07,766 - io_manager - INFO - start matching with sine.json
+2018-11-20 21:40:07,791 - io_manager - INFO - start matching with sinetest.json
+2018-11-20 21:40:07,791 - io_manager - INFO - start matching with sinetest.json
+2018-11-20 21:40:07,791 - io_manager - INFO - start matching with sinetest.json
+2018-11-20 21:44:02,294 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\io_manager.py:94: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio/sine.wav'>
+  wavPath = convert_local_to_wav(filePath, libPath)
+
+2018-11-20 21:44:03,816 - io_manager - ERROR - <built-in method format of str object at 0x0000025C0FDB4870>
+2018-11-20 21:44:03,816 - io_manager - ERROR - <built-in method format of str object at 0x0000025C0FDB4870>
+2018-11-20 21:44:12,382 - io_manager - INFO - start matching with demo_1.json
+2018-11-20 21:44:12,382 - io_manager - INFO - start matching with demo_1.json
+2018-11-20 21:44:12,382 - io_manager - INFO - start matching with demo_1.json
+2018-11-20 21:44:16,695 - io_manager - INFO - start matching with demo_2.json
+2018-11-20 21:44:16,695 - io_manager - INFO - start matching with demo_2.json
+2018-11-20 21:44:16,695 - io_manager - INFO - start matching with demo_2.json
+2018-11-20 21:44:19,498 - io_manager - INFO - start matching with demo_3.json
+2018-11-20 21:44:19,498 - io_manager - INFO - start matching with demo_3.json
+2018-11-20 21:44:19,498 - io_manager - INFO - start matching with demo_3.json
+2018-11-20 21:44:21,873 - io_manager - INFO - start matching with demo_4.json
+2018-11-20 21:44:21,873 - io_manager - INFO - start matching with demo_4.json
+2018-11-20 21:44:21,873 - io_manager - INFO - start matching with demo_4.json
+2018-11-20 21:44:23,216 - io_manager - INFO - start matching with demo_5.json
+2018-11-20 21:44:23,216 - io_manager - INFO - start matching with demo_5.json
+2018-11-20 21:44:23,216 - io_manager - INFO - start matching with demo_5.json
+2018-11-20 21:44:29,340 - io_manager - INFO - start matching with demo_6.json
+2018-11-20 21:44:29,340 - io_manager - INFO - start matching with demo_6.json
+2018-11-20 21:44:29,340 - io_manager - INFO - start matching with demo_6.json
+2018-11-20 21:44:34,382 - io_manager - INFO - start matching with sine.json
+2018-11-20 21:44:34,382 - io_manager - INFO - start matching with sine.json
+2018-11-20 21:44:34,382 - io_manager - INFO - start matching with sine.json
+2018-11-20 21:44:34,655 - io_manager - INFO - start matching with sinetest.json
+2018-11-20 21:44:34,655 - io_manager - INFO - start matching with sinetest.json
+2018-11-20 21:44:34,655 - io_manager - INFO - start matching with sinetest.json
+2018-11-20 21:44:34,969 - io_manager - INFO - start matching with demo_1.json
+2018-11-20 21:44:34,969 - io_manager - INFO - start matching with demo_1.json
+2018-11-20 21:44:34,969 - io_manager - INFO - start matching with demo_1.json
+2018-11-20 21:44:49,126 - io_manager - INFO - start matching with demo_2.json
+2018-11-20 21:44:49,126 - io_manager - INFO - start matching with demo_2.json
+2018-11-20 21:44:49,126 - io_manager - INFO - start matching with demo_2.json
+2018-11-20 21:44:57,149 - io_manager - INFO - start matching with demo_3.json
+2018-11-20 21:44:57,149 - io_manager - INFO - start matching with demo_3.json
+2018-11-20 21:44:57,149 - io_manager - INFO - start matching with demo_3.json
+2018-11-20 21:45:09,641 - io_manager - INFO - start matching with demo_4.json
+2018-11-20 21:45:09,641 - io_manager - INFO - start matching with demo_4.json
+2018-11-20 21:45:09,641 - io_manager - INFO - start matching with demo_4.json
+2018-11-20 21:45:16,025 - io_manager - INFO - start matching with demo_5.json
+2018-11-20 21:45:16,025 - io_manager - INFO - start matching with demo_5.json
+2018-11-20 21:45:16,025 - io_manager - INFO - start matching with demo_5.json
+2018-11-20 21:45:47,478 - io_manager - INFO - start matching with demo_6.json
+2018-11-20 21:45:47,478 - io_manager - INFO - start matching with demo_6.json
+2018-11-20 21:45:47,478 - io_manager - INFO - start matching with demo_6.json
+2018-11-20 21:46:28,044 - io_manager - INFO - start matching with sine.json
+2018-11-20 21:46:28,044 - io_manager - INFO - start matching with sine.json
+2018-11-20 21:46:28,044 - io_manager - INFO - start matching with sine.json
+2018-11-20 21:46:28,072 - io_manager - INFO - start matching with sinetest.json
+2018-11-20 21:46:28,072 - io_manager - INFO - start matching with sinetest.json
+2018-11-20 21:46:28,072 - io_manager - INFO - start matching with sinetest.json
