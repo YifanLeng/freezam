@@ -77,9 +77,9 @@ class Database:
         except(Exception, psycopg2.DatabaseError) as error:
             print(error)
 
-    def remove_from_database(self, filename, logger):
+    def remove_from_database(self, songs):
         """
-        remove a song object into the database
+        remove a song object from the database (songs_info and fingerprints)
         ----------
         filename :  file, str, or pathlib.Path
             File or filename to which the data is saved. 
@@ -88,13 +88,50 @@ class Database:
         result : int
             0 if the removal fails and 1 if it succedds
         """
-        songname = filename.split(".")[0]
-        filePath = os.path.join(self.path, songname + '.json')
+        # source is a unique indentifier of an audio file
+        sql_delete = "DELETE FROM songs_info WHERE source = %s;"
+        # entries from fingerprints are automatically removed because 
+        # it has song_id as a foreign key on constraint DELETE CASADE
         try:
-            os.remove(filePath)
-        except:
-            logger.error("Failed tp remove {} from the database".format)
-        
+            conn = psycopg2.connect(host=self.host, dbname=self.database, \
+                                    user=self.user, password=self.password)
+            cur = conn.cursor()
+            for song in songs:
+                source = song.path
+                cur.execute(sql_delete, (source,))
+                conn.commit()
+            cur.close()
+            conn.close()
+
+        except(Exception, psycopg2.DatabaseError) as error:
+            print(error)
+
+
+    def is_in_database(self, song):
+        """
+        check if a song is in the songs_info and fingerprints
+        """
+        sql_info_check = "SELECT * FROM songs_info WHERE source = %s;"
+        sql_fp_check = "SELECT * FROM songs_info WHERE source = %s;"
+        try:
+            conn = psycopg2.connect(host=self.host, dbname=self.database, \
+                                    user=self.user, password=self.password)
+            cur = conn.cursor()
+            cur.execute(sql_info_check, (song.path,))
+            info_check = cur.fetchone()
+            cur.execute(sql_fp_check, (song.path,))
+            fp_check = cur.fetchone()
+    
+            if info_check is None and fp_check is None:
+                return False
+            elif info_check is not None and fp_check is not None:
+                return True
+            else:
+                raise Exception("The song should be deleted from both songs_info\
+                                and fingerprints")
+
+        except(Exception, psycopg2.DatabaseError) as error:
+            print(error)
 
     def search(self, snippet):
         """
@@ -139,9 +176,7 @@ class Database:
         identified_id = max(set(song_ids), key=song_ids.count)
 
         # retrieve the song name
-        print(id_names_dict[identified_id])
-        return identified_id
-
+        return id_names_dict[identified_id]
 
 
     def match(self, snippet):
@@ -181,8 +216,6 @@ class Database:
                          FROM songs_info s;"
             cur.execute(query_names)
             id_names = cur.fetchall()
-            print("The number of pairs matched in the database")
-            print(len(matches))
             
             cur.execute("DROP TABLE snippet_fingerprint")
             conn.commit()

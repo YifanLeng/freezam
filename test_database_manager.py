@@ -4,55 +4,41 @@ from song_manager import Song
 import os
 from io_manager import setuplogger
 
-def getListOfFiles(dirName):
-    # create a list of file and sub directories 
-    # names in the given directory 
-    listOfFile = os.listdir(dirName)
-    allFiles = list()
-    # Iterate over all the entries
-    for entry in listOfFile:
-        # Create full path
-        fullPath = os.path.join(dirName, entry)
-        # If entry is a directory then get the list of files in this directory 
-        if os.path.isdir(fullPath):
-            allFiles = allFiles + getListOfFiles(fullPath)
-        else:
-            allFiles.append(fullPath)
-                
-    return allFiles
-
 class TestDatabase(unittest.TestCase):
     def setUp(self):
-        self.db = Database("./Database")
+        self.db = Database("localhost", "postgres", "postgres", "Ivan@1995")
         self.logger = setuplogger(False, "./log/test_log")
-        self.song1 = Song("sinetest", "unknown", "./test_audio/sinetest.wav", "./test_audio/", self.logger)
-        self.song2 = Song("sine", "unknown", "./test_audio/sine.mp3", "./test_audio/", self.logger)
+        self.song1 = Song("sinetest", "unknown", "./test_audio/sinetest.wav", "./test_audio/", False)
+        self.song2 = Song("sine", "unknown", "./test_audio/sine.mp3", "./test_audio/", False)
         
 
     def test_save_to_database(self):
-        self.db.save_to_database(self.song1)
-        self.db.save_to_database(self.song2)
-        self.db_files = getListOfFiles("./Database")
-        self.assertTrue("./Database\\sinetest.json" in self.db_files)
-        self.assertTrue("./Database\\sine.json" in self.db_files)
+        self.db.save_to_database([self.song1])
+        self.db.save_to_database([self.song2])    
+        print("test save to db") 
+        self.assertTrue(self.db.is_in_database(self.song1))
+        self.assertTrue(self.db.is_in_database(self.song2))
     
 
     def test_remove_from_database(self):
-        self.db.remove_from_database("test1.wav", self.logger)
-        self.db.remove_from_database("test2.wav", self.logger)
-        self.db_files = getListOfFiles("./Database")
-        self.assertFalse("./Database\\test1.json" in self.db_files)
-        self.assertFalse("./Database\\test2.json" in self.db_files)
+        self.db.remove_from_database([self.song1])
+        self.db.remove_from_database([self.song2])
+        print("test remove from db") 
+        self.assertFalse(self.db.is_in_database(self.song1))
+        self.assertFalse(self.db.is_in_database(self.song2))
     
-        
-        
 
-    def test_slowSearch(self):
-        snippet = Song("demo_1_snippet", "unknown", "./snippets/demo_1_snippet.wav", \
-                       "./snippets/", self.logger)
-        threshold = 0.2
-        self.assertEqual("demo_1", self.db.slowSearch(snippet.signature, threshold, self.logger))
-        self.assertEqual('sine', self.db.slowSearch(self.song1.signature, threshold, self.logger))
-        
+    def test_search(self):
+        # a cut snippet (with high sound quality)
+        snippet = Song("dvorak_mini_snippet", "dvorak", \
+                         "./snippets/dvorak_mini_snippet.wav",
+                         "./snippets/", False)
+                       
+        # a real-worlf recording (with low sound quality)
+        recording = Song("who_knew_noise", "pink", "./snippets/who_knew_noise.wav", \
+                       "./snippets/", False)
+        self.assertEqual("dvorak_miniatures_opus_74a_3.mp3", self.db.search(snippet))
+        self.assertEqual("who_knew.mp3", self.db.search(recording))
+       
 if __name__ == '__main__':
     unittest.main()

@@ -265,3 +265,8 @@
 
 2018-11-25 14:33:17,800 - io_manager - INFO - find the matched song 29
 2018-11-25 14:36:41,123 - io_manager - INFO - find the matched song 12
+2018-11-25 16:38:44,401 - io_manager - INFO - find the matched song Marco_Castelli_-_02_-_Martina_and_the_air_plan_no_intro_version.mp3
+2018-11-25 16:40:27,405 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\signal\signaltools.py:2383: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return y[keep]
+
+2018-11-25 16:40:37,839 - io_manager - INFO - find the matched song dvorak_miniatures_opus_74a_3.mp3

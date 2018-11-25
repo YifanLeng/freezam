@@ -4,7 +4,7 @@ from random import gauss, seed
 from scipy import signal
 from spectral_analysis import sliding_window
 from spectral_analysis import get_windowed_signals
-from spectral_analysis import get_spectrograms
+from spectral_analysis import get_spectrogram
 from spectral_analysis import get_signature
 from scipy.signal import find_peaks
 
@@ -52,8 +52,8 @@ class TestSpectralAnalysis(unittest.TestCase):
         self.assertTrue(np.allclose(windowed_signals, \
                   get_windowed_signals(self.wn, self.fs, "hann", size, stepsize)))
 
-    def test_get_spectrograms(self):
-        sptrogm = get_spectrograms(self.fs, self.sine_small, 100, 50)
+    def test_get_spectrogram(self):
+        sptrogm = get_spectrogram(self.fs, self.sine_small, 100, 50, "sine_small.wav", False)
         # use the first windowed signal as test
         f_test = np.array(sptrogm[0][0])
         Pxx_test = np.array(sptrogm[0][1])
@@ -71,7 +71,7 @@ class TestSpectralAnalysis(unittest.TestCase):
     def test_get_signature(self):
         # the 5 frequencies that match the largest 5 
         #  peaks in spectral density are [0.12, 0.13, ... 0.16]
-        sptgram = get_spectrograms(500, self.sine, 100, 50)
+        sptgram = get_spectrogram(500, self.sine, 100, 50, "sine.wav", False)
         (f, p) = sptgram[0]
         f_sig = 1/len([f[np.argmax(p)]])
         self.assertTrue(np.allclose(f_sig, get_signature(sptgram, 1)[0][0]))

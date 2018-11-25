@@ -252,3 +252,57 @@
 2018-11-20 21:46:28,072 - io_manager - INFO - start matching with sinetest.json
 2018-11-20 21:46:28,072 - io_manager - INFO - start matching with sinetest.json
 2018-11-20 21:46:28,072 - io_manager - INFO - start matching with sinetest.json
+2018-11-25 16:27:37,059 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\signal\signaltools.py:2383: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return y[keep]
+
+2018-11-25 16:27:37,314 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\io_manager.py:113: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio/sine.wav'>
+  wavPath = convert_local_to_wav(filePath, libPath)
+
+2018-11-25 16:29:16,228 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\signal\signaltools.py:2383: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return y[keep]
+
+2018-11-25 16:29:16,527 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\io_manager.py:113: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio/sine.wav'>
+  wavPath = convert_local_to_wav(filePath, libPath)
+
+2018-11-25 16:30:17,130 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\signal\signaltools.py:2383: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return y[keep]
+
+2018-11-25 16:30:17,359 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\io_manager.py:113: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio/sine.wav'>
+  wavPath = convert_local_to_wav(filePath, libPath)
+
+2018-11-25 16:30:54,855 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\signal\signaltools.py:2383: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return y[keep]
+
+2018-11-25 16:30:55,153 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\io_manager.py:113: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio/sine.wav'>
+  wavPath = convert_local_to_wav(filePath, libPath)
+
+2018-11-25 16:45:59,577 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\signal\signaltools.py:2383: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return y[keep]
+
+2018-11-25 16:45:59,850 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\io_manager.py:113: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio/sine.wav'>
+  wavPath = convert_local_to_wav(filePath, libPath)
+
+2018-11-25 16:46:48,736 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\signal\signaltools.py:2383: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return y[keep]
+
+2018-11-25 16:46:49,018 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\io_manager.py:113: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio/sine.wav'>
+  wavPath = convert_local_to_wav(filePath, libPath)
+
+2018-11-25 16:57:19,356 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\signal\signaltools.py:2383: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return y[keep]
+
+2018-11-25 16:57:19,607 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\io_manager.py:113: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio/sine.wav'>
+  wavPath = convert_local_to_wav(filePath, libPath)
+
+2018-11-25 17:06:13,352 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\signal\signaltools.py:2383: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return y[keep]
+
+2018-11-25 17:06:13,610 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\io_manager.py:113: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio/sine.wav'>
+  wavPath = convert_local_to_wav(filePath, libPath)
+
+2018-11-25 17:07:01,393 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\signal\signaltools.py:2383: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return y[keep]
+
+2018-11-25 17:07:01,662 - py.warnings - WARNING - C:\Users\lengy\Desktop\shazam\io_manager.py:113: ResourceWarning: unclosed file <_io.BufferedRandom name='./test_audio/sine.wav'>
+  wavPath = convert_local_to_wav(filePath, libPath)
+
