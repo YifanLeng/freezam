@@ -55,39 +55,26 @@ def identify(args):
     logger = setuplogger(args.verbose, "./log/identify_log")
     filename = args.filename
     if filename is None:
-        # record the audio
+        # record the audio, set duration in s and fs in Hz
+        (dur, fs) = (30, 44100)
         print("*recording")
-        myrecording = sd.rec(int(30 * 8000), 8000, 2)
-        # reshape the recorded signal
-        sd.wait()
+        myrecording = sd.rec(int(dur * fs), fs, 1, blocking=True)
         print("*end")
-        mono_signal = np.mean(myrecording, axis=1)
-        sd.play(mono_signal, 8000)
-        #myrecording = np.reshape(myrecording, (int(30 * 8000),))
-        sd.play(mono_signal, 8000)
-        snippet = Song("recording", "user", "from recording", "None", True, mono_signal, 8000)
+        print("*playing")
+        sd.play(myrecording, fs, blocking=True)
+        print("*end")
+        #mono_signal = np.mean(myrecording, axis=1)
+        mono_signal = np.reshape(myrecording, (int(dur*fs),))
+        snippet = Song("recording", "user", "from recording", "None", True, mono_signal, fs)
     else:
         if filename.startswith("http"):
             filePath = filename
         else:
             filePath = os.path.join("./snippets", filename)
-            libPath = './Library/'
-            snippet = Song("recording", "user", filePath, libPath, True)
+        libPath = './Library/'
+        snippet = Song("recording", "user", filePath, libPath, True)
     db = Database("localhost", "postgres", "postgres", "Ivan@1995")
     matched_result = db.search(snippet)
-    """
-    song = Song("demo_1", "various", "./Library/demo_1.wav", libPath, False)
-    snippet_keys = ["({},{}):{}".format(h[0], h[1], h[2]) for h in snippet.hash_values]
-    song_keys = ["({},{}):{}".format(h[0], h[1], h[2]) for h in song.hash_values]
-    # check if there are same keys
-    match = []
-    
-    for k1 in snippet_keys:
-        for k2 in song_keys:
-            if k1==k2:
-                match.append(k1)
-    print(len(match))
-    """
 
     logger.info("find the matched song {}".format(matched_result))
 
