@@ -222,3 +222,34 @@
   return y[keep]
 
 2018-11-24 15:54:41,728 - io_manager - INFO - find the matched song 1
+2018-11-24 22:44:33,908 - io_manager - INFO - find the matched song 9
+2018-11-24 23:01:09,663 - io_manager - INFO - find the matched song 9
+2018-11-24 23:03:13,325 - io_manager - INFO - find the matched song 28
+2018-11-24 23:04:29,502 - io_manager - INFO - find the matched song 11
+2018-11-24 23:09:50,233 - io_manager - INFO - find the matched song 5
+2018-11-24 23:13:41,138 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\signal\signaltools.py:2383: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return y[keep]
+
+2018-11-24 23:13:54,799 - io_manager - INFO - find the matched song 29
+2018-11-24 23:18:13,748 - io_manager - INFO - find the matched song 12
+2018-11-24 23:19:28,544 - io_manager - INFO - find the matched song 17
+2018-11-24 23:21:22,363 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\signal\signaltools.py:2383: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return y[keep]
+
+2018-11-24 23:21:32,685 - io_manager - INFO - find the matched song 31
+2018-11-24 23:23:42,768 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\signal\signaltools.py:2383: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return y[keep]
+
+2018-11-24 23:23:53,134 - io_manager - INFO - find the matched song 31
+2018-11-24 23:33:55,947 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\signal\signaltools.py:2383: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return y[keep]
+
+2018-11-24 23:34:06,056 - io_manager - INFO - find the matched song 29
+2018-11-24 23:35:23,939 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\signal\signaltools.py:2383: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return y[keep]
+
+2018-11-24 23:35:32,219 - io_manager - INFO - find the matched song 29
+2018-11-25 00:14:31,699 - py.warnings - WARNING - C:\Users\lengy\AppData\Local\Programs\Python\Python37\lib\site-packages\scipy\signal\signaltools.py:2383: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
+  return y[keep]
+
+2018-11-25 00:14:39,973 - io_manager - INFO - find the matched song 29

@@ -7,6 +7,24 @@ import scipy
 import scipy.io.wavfile
 import logging
 
+def getListOfFiles(dirName):
+    # create a list of file and sub directories 
+    # names in the given directory 
+    listOfFile = os.listdir(dirName)
+    allFiles = list()
+    # Iterate over all the entries
+    for entry in listOfFile:
+        # Create full path
+        fullPath = os.path.join(dirName, entry)
+        # If entry is a directory then get the list of files in this directory 
+        if os.path.isdir(fullPath):
+            allFiles = allFiles + getListOfFiles(fullPath)
+        else:
+            allFiles.append(fullPath)
+                
+    return allFiles
+
+
 def setuplogger(verbose, logFile):
     # create a logger for warnings
     logging.captureWarnings(True)
@@ -123,7 +141,10 @@ def convert_to_signal(filePath, libPath):
     if num_channels == 2:
         # take the mean of the two channels
         mono_signal = np.mean(signal, axis=1)
+    elif num_channels == 1:
+        mono_signal = np.reshape(signal, (signal.shape[0],))
     else:
+        # the number of channel is None
         mono_signal = signal
     # downsample the signal with a sample rate of 8000 Hz
     out_rate = 8000

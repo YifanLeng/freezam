@@ -42,8 +42,7 @@ class Database:
         conn.close()
 
 
-    def save_to_database(self, song):
-        hash_values = song.hash_values
+    def save_to_database(self, songs):
         sql_song = "INSERT INTO songs_info(title,\
                       artist, source) VALUES \
                       (%s,%s,%s)"
@@ -55,21 +54,23 @@ class Database:
             conn = psycopg2.connect(host=self.host, dbname=self.database, \
                                     user=self.user, password=self.password)
             cur = conn.cursor()
-            # insert song's info the the songs_info table
-            cur.execute(sql_song, (song.title, song.artist, song.path))
-            # retrieve the added song's id 
-            cur.execute("SELECT LASTVAL();")
-            last_id = cur.fetchone()[0]
-            print(last_id)
-            # insert the hash key and values of the pairs generated from the 
-            # constellation map
-            fingerprints = [(last_id, "({},{}):{}".format(h[0], h[1], h[2]),\
-                           h[3]) for h in hash_values]
-            # execute groups of statements in fewer server roundtrips.
-            # for faster insertion speed
-            # cur.executemany(sql_fp, fingerprints)
-            execute_batch(cur, sql_fp, fingerprints)
-            conn.commit()
+            for song in songs:
+                # insert song's info the the songs_info table
+                cur.execute(sql_song, (song.title, song.artist, song.path))
+                # retrieve the added song's id 
+                cur.execute("SELECT LASTVAL();")
+                last_id = cur.fetchone()[0]
+               
+                # insert the hash key and values of the pairs generated from the 
+                # constellation map
+                hash_values = song.hash_values
+                fingerprints = [(last_id, "({},{}):{}".format(h[0], h[1], h[2]),\
+                                h[3]) for h in hash_values]
+                # execute groups of statements in fewer server roundtrips.
+                # for faster insertion speed
+                # cur.executemany(sql_fp, fingerprints)
+                execute_batch(cur, sql_fp, fingerprints)
+                conn.commit()
             cur.close()
             conn.close()
 
@@ -113,7 +114,12 @@ class Database:
         song_id : int
             the id of the song in the songs_info table
         """
-        matches = self.match(snippet)
+        (matches, id_names) = self.match(snippet)
+        # build a hash for the id_names
+        id_names_dict = dict()
+        for (id, name) in id_names:
+            id_names_dict[id] = name
+
         hash_by_shift = {}
         # find the most frequent common shift
         (shift_max, max_count) = (0, 0)
@@ -131,7 +137,9 @@ class Database:
         song_ids = hash_by_shift[shift_max]
         # identify the most frequent song_id
         identified_id = max(set(song_ids), key=song_ids.count)
-        print(identified_id)
+
+        # retrieve the song name
+        print(id_names_dict[identified_id])
         return identified_id
 
 
@@ -168,13 +176,19 @@ class Database:
                          WHERE f.pair_key = s.pair_key;"
             cur.execute(query)
             matches = cur.fetchall()
+            # query the song names and song id 
+            query_names = "SELECT s.song_id, s.title\
+                         FROM songs_info s;"
+            cur.execute(query_names)
+            id_names = cur.fetchall()
+            print("The number of pairs matched in the database")
             print(len(matches))
-            # TODO: drop the table
-            # cur.execute("DROP TABLE snippet_fingerprint")
-            #  conn.commit()
+            
+            cur.execute("DROP TABLE snippet_fingerprint")
+            conn.commit()
             cur.close()
             conn.close()
-            return matches
+            return (matches, id_names)
         
         except(Exception, psycopg2.DatabaseError) as error:
             print(error)

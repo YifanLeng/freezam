@@ -1,9 +1,11 @@
 import argparse
-from io_manager import setuplogger
+from io_manager import setuplogger, getListOfFiles
 import os
 import json
 from song_manager import Song
 from database_manager import Database
+import sounddevice as sd
+import numpy as np
 
 def add(args):
     """
@@ -18,11 +20,29 @@ def add(args):
         filePath = filename
     else:
         filePath = os.path.join("./Library", filename)
+
     libPath = './Library/'
-    song = Song(args.title, args.artist, filePath, libPath, True)
-    db = Database("localhost", "postgres", "postgres", "Ivan@1995")
-    # print(song.get_data())
-    db.save_to_database(song)
+    if args.filename == 'all':
+        # adding all songs in the Library folder
+        audio_paths = getListOfFiles(libPath)
+        db = Database("localhost", "postgres", "postgres", "Ivan@1995")
+        songs = []
+        for audio_path in audio_paths:
+            title = os.path.basename(audio_path)
+            artist = "various"
+            song = Song(title, artist, audio_path, libPath, True)
+            songs.append(song)
+            db = Database("localhost", "postgres", "postgres", "Ivan@1995")
+            db.save_to_database([song])
+            print("{} added".format(title))
+    else:
+        if args.title is None:
+            title = os.path.basename(filePath)
+        else:
+            title = args.title
+        song = Song(title, args.artist, filePath, libPath, True)
+        db = Database("localhost", "postgres", "postgres", "Ivan@1995")
+        db.save_to_database([song])
 
 def identify(args):
     """
@@ -34,12 +54,25 @@ def identify(args):
     """
     logger = setuplogger(args.verbose, "./log/identify_log")
     filename = args.filename
-    if filename.startswith("http"):
-        filePath = filename
+    if filename is None:
+        # record the audio
+        print("*recording")
+        myrecording = sd.rec(int(30 * 8000), 8000, 2)
+        # reshape the recorded signal
+        sd.wait()
+        print("*end")
+        mono_signal = np.mean(myrecording, axis=1)
+        sd.play(mono_signal, 8000)
+        #myrecording = np.reshape(myrecording, (int(30 * 8000),))
+        sd.play(mono_signal, 8000)
+        snippet = Song("recording", "user", "from recording", "None", True, mono_signal, 8000)
     else:
-        filePath = os.path.join("./snippets", filename)
-    libPath = './Library/'
-    snippet = Song("recording", "user", filePath, libPath, True)
+        if filename.startswith("http"):
+            filePath = filename
+        else:
+            filePath = os.path.join("./snippets", filename)
+            libPath = './Library/'
+            snippet = Song("recording", "user", filePath, libPath, True)
     db = Database("localhost", "postgres", "postgres", "Ivan@1995")
     matched_result = db.search(snippet)
     """
@@ -101,7 +134,7 @@ def main():
     # creat the parser for the "identiy" command
     parser_idfy = subparsers.add_parser('identify', help='identify a song in \
                                          the library')
-    parser_idfy.add_argument("filename", help='file name in /Search directory or \
+    parser_idfy.add_argument("filename", nargs='?', help='file name in /Search directory or \
                                                its url')
     parser_idfy.add_argument('-v', "--verbose", help="verbose mode", action='store_true')
     parser_idfy.set_defaults(func=identify)
