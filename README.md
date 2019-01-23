@@ -7,7 +7,7 @@ First, git clone the project into a local git directory shazam. The shazam/Libra
 #### Add a song to the Library
 To add a song to the library, first download the music file (preferably in mp3 or wav format) into the shazam/Library folder. Then run the following command in the terminal: 
 ```sh
-$ python3 freezam.py [-t song_title] [-a artist_name] [--verbose] <filename>
+$ python3 freezam.py [-t song_title] [-a artist_name] [--verbose] filename.extension
 ```
 
 ### Prerequisites
