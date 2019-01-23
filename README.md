@@ -1,10 +1,14 @@
-# Project Title
-
-One Paragraph of project description goes here
+# Freezam
+a Python command-line application to recognize a real-time recording of a song snippet. The program will match the snippet with the songs in the library and displays the closest match in spectrogram. The project has been tested on Windows and Ubuntu 18.04.1 LTS.
 
 ## Getting Started
+First, git clone the project into a local git directory shazam. The shazam/Library folder contains pre-downloaded music files. To run the application, the entry point is the freezam.py file under shazam folder. The application has the following functionalities:
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+#### Add a song to the Library
+To add a song to the library, first download the music file (preferably in mp3 or wav format) into the shazam/Library folder. Then run the following command in the terminal: 
+```sh
+$ python3 freezam.py
+```
 
 ### Prerequisites
 
