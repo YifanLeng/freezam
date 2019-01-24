@@ -11,9 +11,11 @@ $ python3 freezam.py [-t song_title] [-a artist_name] [--verbose] <filename.exte
 ```
 
 ### Prerequisites
-
-ffmpeg
-libportaudio2
+####software:
+ffmpeg \\
+libportaudio2 \\
+PostgreSQL \\
+####Python packages
 NumPy-1.16.0
 SciPy-1.2.0
 psycopg2
