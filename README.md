@@ -10,13 +10,13 @@ To add a song to the library, first download the music file (preferably in mp3 o
 $python3 freezam.py [-t song_title] [-a artist_name] [--verbose] <filename.extension>;
 ```
 
-### Identify a recording
+#### Identify a recording
 Provide a filename in shazam/snippets or an url. If no filename is provided, the program will start recording a snippet to match with songs in the Library.
 ```
 $python3 freezam.py identify [--verbose] <filename.extension or url> 
 ```
 
-### List the infromation of songs in the PostgreSQL Database
+#### List the infromation of songs in the PostgreSQL Database
 ```
 $python3 freezam.py [--verbose] list
 ```
