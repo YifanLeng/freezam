@@ -10,12 +10,12 @@ To add a song to the library, first download the music file (preferably in mp3 o
 $ python3 freezam.py [-t song_title] [-a artist_name] [--verbose] <filename.extension>;
 ```
 
-### Prerequisites
-####software:
-ffmpeg \\
-libportaudio2 \\
-PostgreSQL \\
-####Python packages
+### Prerequisite
+#### software:
+ffmpeg 
+libportaudio2 
+PostgreSQL 
+#### Python packages
 NumPy-1.16.0
 SciPy-1.2.0
 psycopg2
