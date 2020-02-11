@@ -25,14 +25,14 @@ def add(args):
     if args.filename == 'all':
         # adding all songs in the Library folder
         audio_paths = getListOfFiles(libPath)
-        db = Database("localhost", "postgres", "postgres", "Ivan@1995")
+        db = Database("localhost", "postgres", "postgres", "*********")
         songs = []
         for audio_path in audio_paths:
             title = os.path.basename(audio_path)
             artist = "various"
             song = Song(title, artist, audio_path, libPath, True)
             songs.append(song)
-            db = Database("localhost", "postgres", "postgres", "Ivan@1995")
+            db = Database("localhost", "postgres", "postgres", "*********")
             db.save_to_database([song])
             print("{} added".format(title))
     else:
